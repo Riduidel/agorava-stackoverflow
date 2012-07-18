@@ -39,6 +39,8 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <!-- Defining it in parent, to be sure arquilian works well -->
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <!-- Added to allow site to be generated from a markdown source (which could be a copy of github site)
