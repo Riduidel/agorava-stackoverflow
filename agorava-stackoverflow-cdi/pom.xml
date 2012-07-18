@@ -1,23 +1,28 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>agorava-stackoverflow</artifactId>
-    <name>agorava-stackoverflow-cdi</name>
     <parent>
-        <artifactId>agorava-stackoverflow-parent</artifactId>
+        <artifactId>agorava-stackoverflow</artifactId>
         <groupId>org.agorava</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>agorava-stackoverflow-cdi</artifactId>
+    <name>agorava-stackoverflow-cdi</name>
     <dependencies>
         <dependency>
-            <groupId>org.agorava</groupId>
-            <artifactId>agorava-core-api</artifactId>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.agorava</groupId>
-            <artifactId>agorava-stackoverflow-cdi</artifactId>
+            <artifactId>agorava-stackoverflow-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.agorava</groupId>
+            <artifactId>agorava-core-impl-cdi</artifactId>
+        </dependency>
     </dependencies>
+    <!-- is the arquilian test necessary ? I'm quite sure there are less "heavy" ways to test CDI code, no ? NO ? -->
 </project>
