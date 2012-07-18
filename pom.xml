@@ -1,39 +1,63 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.agorava</groupId>
-  <artifactId>agorava-stackoverflow</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>agorava-stackoverflow</name>
-  <properties>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+             
+    <parent>
+        <artifactId>agorava-parent</artifactId>
+        <groupId>org.agorava</groupId>
+        <version>${agorava.version}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.agorava</groupId>
+    <artifactId>agorava-stackoverflow</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>agorava-stackoverflow</name>
+    <properties>
   <!-- version used as long as agorava-stackoverflow is not in the official release train -->
-  	<agorava.version>0.5.0-SNAPSHOT</agorava.version>
-  </properties>
-  <modules>
-	<module>agorava-stackoverflow-api</module>
-	<module>agorava-stackoverflow-cdi</module>
-  </modules>
-          <build>
-                <plugins>
-                        <plugin>
-							<!-- Added to allow site to be generated from a markdown source (which could be a copy of github site)
-							See http://code.google.com/p/doxia-module-markdown/wiki/Usage for more infos
-							And edit using http://homepage.univie.ac.at/werner.robitza/markdown/ (as an example)
-							-->
-                                <groupId>org.apache.maven.plugins</groupId>
-                                <artifactId>maven-site-plugin</artifactId>
-                                <dependencies>
-                                        <dependency>
-                                                <groupId>org.apache.maven.doxia</groupId>
-                                                <artifactId>doxia-module-markdown</artifactId>
-                                                <version>1.3</version>
-                                        </dependency>
-                                </dependencies>
-                                <configuration>
-                                        <inputEncoding>UTF-8</inputEncoding>
-                                        <outputEncoding>UTF-8</outputEncoding>
-                                </configuration>
-                        </plugin>
+        <agorava.version>0.5.0-SNAPSHOT</agorava.version>
+    </properties>
+    <modules>
+        <module>agorava-stackoverflow-api</module>
+        <module>agorava-stackoverflow-cdi</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.agorava</groupId>
+                <artifactId>agorava-parent</artifactId>
+                <version>${agorava.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.agorava</groupId>
+                <artifactId>agorava-core-cdi</artifactId>
+                <version>${agorava.version}</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Added to allow site to be generated from a markdown source (which could be a copy of github site)
+                See http://code.google.com/p/doxia-module-markdown/wiki/Usage for more infos
+                And edit using http://homepage.univie.ac.at/werner.robitza/markdown/ (as an example)
+                -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-markdown</artifactId>
+                        <version>1.3</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <inputEncoding>UTF-8</inputEncoding>
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
+            </plugin>
         </build>
-</project>
+    </project>

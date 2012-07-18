@@ -1,9 +1,18 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.agorava</groupId>
-  <artifactId>agorava-stackoverflow</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <name>agorava-stackoverflow-api</name>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>agorava-stackoverflow-parent</artifactId>
+        <groupId>org.agorava</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>agorava-stackoverflow</artifactId>
+    <name>agorava-stackoverflow-api</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.agorava</groupId>
+            <artifactId>agorava-core-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>
