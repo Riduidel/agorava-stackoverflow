@@ -15,6 +15,7 @@
                         <plugin>
 							<!-- Added to allow site to be generated from a markdown source (which could be a copy of github site)
 							See http://code.google.com/p/doxia-module-markdown/wiki/Usage for more infos
+							And edit using http://homepage.univie.ac.at/werner.robitza/markdown/ (as an example)
 							-->
                                 <groupId>org.apache.maven.plugins</groupId>
                                 <artifactId>maven-site-plugin</artifactId>
