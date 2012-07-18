@@ -6,6 +6,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>agorava-stackoverflow</name>
+  <properties>
+  <!-- version used as long as agorava-stackoverflow is not in the official release train -->
+  	<agorava.version>0.5.0-SNAPSHOT</agorava.version>
+  </properties>
   <modules>
 	<module>agorava-stackoverflow-api</module>
 	<module>agorava-stackoverflow-cdi</module>
