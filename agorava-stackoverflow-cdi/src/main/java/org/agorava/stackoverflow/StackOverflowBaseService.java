@@ -18,6 +18,11 @@ public class StackOverflowBaseService extends AbstractSocialNetworkService {
     public Annotation getQualifier() {
         return StackOverflowLiteral.INSTANCE;
     }
+
+    @Override
+    public String getApiRootUrl() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
     
     
 }
