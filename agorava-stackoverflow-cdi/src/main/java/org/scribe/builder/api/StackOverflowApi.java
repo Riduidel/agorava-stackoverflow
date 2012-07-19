@@ -8,6 +8,7 @@ import org.scribe.model.OAuthConfig;
 
 /**
  * Created thanks to antoine_sd and the doc available both from scribe and from https://api.stackexchange.com/docs/authentication
+ * TODO integrate api key and api secret (available both on StackOverflow site)
  * @author ndx
  */
 public class StackOverflowApi extends DefaultApi20 {
