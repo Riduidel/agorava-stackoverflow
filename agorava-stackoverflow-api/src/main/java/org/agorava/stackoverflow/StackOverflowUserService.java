@@ -9,5 +9,13 @@ package org.agorava.stackoverflow;
  * @author ndx
  */
 public interface StackOverflowUserService {
-    
+    /**
+     * TODO chec how it matches SO concepts
+     */
+    public String getProfileId();
+
+    /**
+     * TODO chec how it matches SO concepts
+     */
+    public String getScreenName();
 }
