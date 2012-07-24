@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
 
+import org.agorava.stackexchange.StackExchange;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -30,14 +31,13 @@ import org.junit.runner.RunWith;
  * @author ndx
  */
 @RunWith(Arquillian.class)
-public class StackOverflowTest {
+public abstract class StackExchangeTest {
+    public static final String STACKOVERFLOW_SECRET = "r5keqeo7rtTq0NXBea9ZqQ((";
+    public static final String STACKOVERFLOW_TOKEN = "X)SStU6ugHkVHwu0zZ3JBg((";
 
     @Inject
-    @StackOverflow
+    @StackExchange
     SocialMediaApiHub serviceHub;
-
-    @Inject
-    StackOverflowUserService userService;
 
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
@@ -45,7 +45,7 @@ public class StackOverflowTest {
         WebArchive ret = ShrinkWrap
                 .create(WebArchive.class, "test.war")
                 .addPackages(true, "org.agorava")
-                .addClass(StackOverflowProducer.class)
+                .addClass(StackExchangeProducer.class)
                 // TODO make use of system properties to inject dependencies and resolve stackoverflow
                 .addAsLibraries(new File("../agorava-stackoverflow-api/target/agorava-stackoverflow-api.jar"));
         System.out.println(System.getProperty("arquillian"));
@@ -64,13 +64,8 @@ public class StackOverflowTest {
 
     @Before
     public void init() {
-        OAuthToken token = new OAuthTokenScribe("X)SStU6ugHkVHwu0zZ3JBg((", "r5keqeo7rtTq0NXBea9ZqQ((");
+        OAuthToken token = new OAuthTokenScribe(STACKOVERFLOW_TOKEN, STACKOVERFLOW_SECRET);
         serviceHub.getSession().setAccessToken(token);
         serviceHub.getService().initAccessToken();
-    }
-
-    @Test
-    public void authorizationUrlTest() {
-        Assert.assertTrue(serviceHub.getService().getAuthorizationUrl().startsWith("http"));
     }
 }

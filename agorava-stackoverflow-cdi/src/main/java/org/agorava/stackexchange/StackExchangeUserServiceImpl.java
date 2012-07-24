@@ -2,13 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
+
+import org.agorava.stackexchange.StackExchangeUserService;
 
 /**
  *
  * @author ndx
  */
-public class StackOverflowUserServiceImpl extends StackOverflowBaseService implements StackOverflowUserService {
+public class StackExchangeUserServiceImpl extends StackExchangeBaseService implements StackExchangeUserService {
 
     @Override
     public String getProfileId() {

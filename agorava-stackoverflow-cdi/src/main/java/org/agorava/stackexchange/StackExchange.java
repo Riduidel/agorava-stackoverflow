@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
 
 import java.lang.annotation.Documented;
 import static java.lang.annotation.ElementType.FIELD;
@@ -25,6 +25,6 @@ import org.agorava.core.api.ServiceRelated;
 @Target({TYPE, METHOD, PARAMETER, FIELD})
 @Retention(RUNTIME)
 @Documented
-public @interface StackOverflow {
+public @interface StackExchange {
     
 }

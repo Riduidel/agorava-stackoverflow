@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
 
 import java.lang.annotation.Annotation;
 import javax.enterprise.util.AnnotationLiteral;
@@ -11,7 +11,7 @@ import javax.enterprise.util.AnnotationLiteral;
  *
  * @author ndx
  */
-public class StackOverflowLiteral extends AnnotationLiteral<StackOverflow> implements StackOverflow {
-    public static StackOverflowLiteral INSTANCE = new StackOverflowLiteral();
+public class StackExchangeLiteral extends AnnotationLiteral<StackExchange> implements StackExchange {
+    public static StackExchangeLiteral INSTANCE = new StackExchangeLiteral();
     
 }

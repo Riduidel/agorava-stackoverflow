@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
 
 import java.lang.annotation.Annotation;
 import org.agorava.core.cdi.AbstractSocialNetworkService;
@@ -12,16 +12,16 @@ import org.agorava.core.cdi.AbstractSocialNetworkService;
  *
  * @author ndx
  */
-public class StackOverflowBaseService extends AbstractSocialNetworkService {
+public class StackExchangeBaseService extends AbstractSocialNetworkService {
 
     @Override
     public Annotation getQualifier() {
-        return StackOverflowLiteral.INSTANCE;
+        return StackExchangeLiteral.INSTANCE;
     }
 
     @Override
     public String getApiRootUrl() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return StackExchangeURIs.API_ROOT;
     }
     
     

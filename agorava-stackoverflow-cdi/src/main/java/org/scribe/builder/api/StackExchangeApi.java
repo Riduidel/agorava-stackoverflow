@@ -15,14 +15,14 @@ import org.scribe.utils.Preconditions;
  * 
  * @author ndx
  */
-public class StackOverflowApi extends DefaultApi20 {
+public class StackExchangeApi extends DefaultApi20 {
 
 	private static final String AUTHORIZE_URL = "https://stackexchange.com/oauth?client_id=%s&redirect_uri=%s";
 	private static final String SCOPED_AUTHORIZE_URL = AUTHORIZE_URL+"&scope=%s";
 
 	@Override
 	public String getAccessTokenEndpoint() {
-		throw new UnsupportedOperationException("Not supported yet.");
+		return "https://stackexchange.com/oauth/access_token";
 	}
 
 	@Override

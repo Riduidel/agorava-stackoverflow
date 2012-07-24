@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
 
+import org.agorava.stackexchange.StackExchangeServiceHub;
+import org.agorava.stackexchange.StackExchange;
 import org.agorava.core.api.SocialMediaApiHub;
 import org.agorava.core.api.oauth.Param;
 import org.agorava.core.oauth.OAuthApplication;
@@ -18,15 +20,15 @@ import static org.agorava.core.api.oauth.OAuthAppSettingsBuilder.API_SECRET;
  *
  * @author ndx
  */
-public class StackOverflowProducer {
+public class StackExchangeProducer {
 
-    @StackOverflow
+    @StackExchange
     @ApplicationScoped
     @OAuthApplication(params = {
         @Param(name = API_KEY, value = "TODO generate api key"),
         @Param(name = API_SECRET, value = "TODO generate api secret")})
     @Produces
-    public SocialMediaApiHub OAuthSettinsProducer(StackOverflowServiceHub service) {
+    public SocialMediaApiHub OAuthSettinsProducer(StackExchangeServiceHub service) {
         return service;
     }
 }

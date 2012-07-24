@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.agorava.stackoverflow;
+package org.agorava.stackexchange;
 
 import java.lang.annotation.Annotation;
 import javax.enterprise.inject.Instance;
@@ -14,16 +14,16 @@ import org.jboss.solder.logging.Logger;
  *
  * @author ndx
  */
-public class StackOverflowServiceHub extends AbstractSocialMediaApiHub {
-    public static final String MEDIA_NAME = "StackOverflow";
+public class StackExchangeServiceHub extends AbstractSocialMediaApiHub {
+    public static final String MEDIA_NAME = "StackExchange";
     
     @Inject Logger logger;
     
-    @Inject Instance<StackOverflowBaseService> services;
+    @Inject Instance<StackExchangeBaseService> services;
 
     @Override
     public Annotation getQualifier() {
-        return StackOverflowLiteral.INSTANCE;
+        return StackExchangeLiteral.INSTANCE;
     }
 
     @Override
