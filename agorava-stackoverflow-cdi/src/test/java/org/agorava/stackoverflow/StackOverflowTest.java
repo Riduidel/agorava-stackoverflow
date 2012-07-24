@@ -6,8 +6,12 @@ package org.agorava.stackoverflow;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+
 import javax.inject.Inject;
+
 import org.agorava.core.api.SocialMediaApiHub;
+import org.agorava.core.api.oauth.OAuthToken;
+import org.agorava.core.oauth.scribe.OAuthTokenScribe;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -16,6 +20,8 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.DependencyResolvers;
 import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -55,8 +61,16 @@ public class StackOverflowTest {
         }
         return ret;
     }
-    
+
+    @Before
+    public void init() {
+        OAuthToken token = new OAuthTokenScribe("X)SStU6ugHkVHwu0zZ3JBg((", "r5keqeo7rtTq0NXBea9ZqQ((");
+        serviceHub.getSession().setAccessToken(token);
+        serviceHub.getService().initAccessToken();
+    }
+
     @Test
-    public void ensureUserHasAName() {
+    public void authorizationUrlTest() {
+        Assert.assertTrue(serviceHub.getService().getAuthorizationUrl().startsWith("http"));
     }
 }

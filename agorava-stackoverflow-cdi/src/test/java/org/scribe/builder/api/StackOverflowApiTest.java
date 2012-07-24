@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
  * Some simple test class to make sure I can connect using OAuth to StackOverflow
  * @author Nicolas
  */
+@Ignore
 public class StackOverflowApiTest {
     
     public StackOverflowApiTest() {
