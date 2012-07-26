@@ -1,4 +1,4 @@
-<arquillian xmlns="http://jboss.com/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<arquillian xmlns="http://jboss.com/arquillian">
 
     <!-- Uncomment to have test archives exported to the file system for inspection -->
     <engine>
