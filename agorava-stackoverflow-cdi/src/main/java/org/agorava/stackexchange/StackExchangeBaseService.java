@@ -13,6 +13,10 @@ import org.agorava.core.cdi.AbstractSocialNetworkService;
  * @author ndx
  */
 public class StackExchangeBaseService extends AbstractSocialNetworkService {
+    /**
+     * TODO REMOVE THAT CONSTANT !!!!
+     */
+    protected static final String SITE_TO_USE = "stackoverflow";
 
     @Override
     public Annotation getQualifier() {
