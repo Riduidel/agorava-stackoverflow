@@ -11,7 +11,7 @@ public abstract class AbstractWrapper<WrappedData> {
     private int quota_max;
     private int quota_remaining;
     private int error_id;
-    private int rror_message;
+    private int error_message;
     private String error_name;
     private int page;
     private int page_size;
@@ -58,10 +58,6 @@ public abstract class AbstractWrapper<WrappedData> {
         this.backoff = backoff.intValue();
     }
 
-    public void setBackoff(int backoff) {
-        this.backoff = backoff;
-    }
-
     public int getError_id() {
         return error_id;
     }
@@ -94,20 +90,12 @@ public abstract class AbstractWrapper<WrappedData> {
         this.page_size = page_size;
     }
 
-    public void setQuota_max(int quota_max) {
-        this.quota_max = quota_max;
+    public int getError_message() {
+        return error_message;
     }
 
-    public void setQuota_remaining(int quota_remaining) {
-        this.quota_remaining = quota_remaining;
-    }
-
-    public int getRror_message() {
-        return rror_message;
-    }
-
-    public void setRror_message(int rror_message) {
-        this.rror_message = rror_message;
+    public void setError_message(int error_message) {
+        this.error_message = error_message;
     }
 
     public int getTotal() {

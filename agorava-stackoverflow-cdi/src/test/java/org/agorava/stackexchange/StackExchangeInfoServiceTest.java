@@ -11,14 +11,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import org.agorava.core.api.exception.AgoravaRestException;
 import org.agorava.stackexchange.model.InfosWrapper;
+import org.agorava.stackexchange.model.Privilege;
 import org.agorava.stackexchange.model.PrivilegesWrapper;
 import org.agorava.stackexchange.model.SiteSpecificStats;
 import org.hamcrest.core.IsNot;
 
 import static org.junit.Assert.assertThat;
-import org.junit.Ignore;
 
 /**
  * @author Nicolas
@@ -29,7 +28,7 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
     StackExchangeInfoService info;
 
 
-    @Test @Ignore
+    @Test
     public void ensureSiteHasInfos() {
         InfosWrapper infos = info.getInfos();
         assertThat(infos, IsNull.notNullValue());
@@ -50,6 +49,8 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
         assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));
         // currently StackExchange API only return one "items" object, containing infos for the current site
         // so this collections is expected to contain only one item as of now
-        assertThat(infos.getItems().size(), Is.is(1));
+        assertThat(infos.getItems().size(), IsNot.not(0));
+        Privilege createPosts = infos.findWithShortDescription("create posts");
+        assertThat(createPosts, IsNull.notNullValue());
     }
 }
