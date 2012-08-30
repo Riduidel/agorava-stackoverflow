@@ -11,10 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import org.agorava.stackexchange.model.InfosWrapper;
+import org.agorava.stackexchange.model.wrappers.InfosWrapper;
 import org.agorava.stackexchange.model.Privilege;
-import org.agorava.stackexchange.model.PrivilegesWrapper;
+import org.agorava.stackexchange.model.wrappers.PrivilegesWrapper;
 import org.agorava.stackexchange.model.SiteSpecificStats;
+import org.agorava.stackexchange.model.wrappers.SitesWrapper;
 import org.hamcrest.core.IsNot;
 
 import static org.junit.Assert.assertThat;
@@ -29,8 +30,20 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 
 
     @Test
+    public void ensureThereAreSites() {
+        SitesWrapper infos = info.getSites();
+        assertThat(infos, IsNull.notNullValue());
+        assertThat(infos.getQuota_max().intValue(), IsNot.not(0));
+        assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));
+        // currently StackExchange API only return one "items" object, containing infos for the current site
+        // so this collections is expected to contain only one item as of now
+        assertThat(infos.getItems().size(), IsNot.not(0));
+        assertThat(infos.getItems().size(), IsNot.not(1));
+    }
+
+    @Test
     public void ensureSiteHasInfos() {
-        InfosWrapper infos = info.getInfos();
+        InfosWrapper infos = info.getInfos(new StackExchangeQueryParameters<Void>());
         assertThat(infos, IsNull.notNullValue());
         assertThat(infos.getQuota_max().intValue(), IsNot.not(0));
         assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));
@@ -43,7 +56,7 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 
     @Test
     public void ensureSiteHasPrivileges() {
-        PrivilegesWrapper infos = info.getPrivileges();
+        PrivilegesWrapper infos = info.getPrivileges(new StackExchangeQueryParameters<Void>());
         assertThat(infos, IsNull.notNullValue());
         assertThat(infos.getQuota_max().intValue(), IsNot.not(0));
         assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));

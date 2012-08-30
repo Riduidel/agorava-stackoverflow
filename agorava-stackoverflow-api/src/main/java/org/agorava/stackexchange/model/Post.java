@@ -4,10 +4,12 @@
  */
 package org.agorava.stackexchange.model;
 
+import java.util.Date;
+
 /**
  *
  * @author ndx
  */
-public class InfosWrapper extends AbstractWrapper<SiteSpecificStats> {
-    
+public class Post extends AbstractPost {
+  public int post_id;
 }
