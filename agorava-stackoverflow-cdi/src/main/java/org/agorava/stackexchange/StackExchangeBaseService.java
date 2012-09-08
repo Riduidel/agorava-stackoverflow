@@ -4,25 +4,19 @@
  */
 package org.agorava.stackexchange;
 
-import java.lang.annotation.Annotation;
-import org.agorava.core.cdi.AbstractSocialNetworkService;
+import org.agorava.core.cdi.AbstractSocialMediaApi;
 
 /**
-    // TODO find a way to inject API root from used StackOverflow site
+ * // TODO find a way to inject API root from used StackOverflow site
  *
  * @author ndx
  */
-public class StackExchangeBaseService extends AbstractSocialNetworkService {
+public abstract class StackExchangeBaseService extends AbstractSocialMediaApi {
+
 
     @Override
-    public Annotation getQualifier() {
-        return StackExchangeLiteral.INSTANCE;
+    public String buildUri(String url) {
+        return StackExchangeURIs.API_ROOT + url;    //To change body of overridden methods use File | Settings | File Templates.
     }
 
-    @Override
-    public String getApiRootUrl() {
-        return StackExchangeURIs.API_ROOT;
-    }
-    
-    
 }
