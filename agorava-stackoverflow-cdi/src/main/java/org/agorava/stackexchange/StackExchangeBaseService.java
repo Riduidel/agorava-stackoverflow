@@ -51,11 +51,11 @@ public class StackExchangeBaseService extends AbstractSocialNetworkService {
      * @param vectorized
      * @return 
      */
-    protected  <WrapperClass extends AbstractWrapper<?>> WrapperClass get(String uri, Class<WrapperClass> wrapper, StackExchangeQueryParameters<?> query, Collection vectorized) {
+    protected  <WrapperClass extends AbstractWrapper<?>> WrapperClass get(String uri, Class<WrapperClass> wrapper, StackExchangeQueryParameters<?> query, Collection<Object> vectorized) {
         return getService().get(buildUri(uri, vectorized, query.toMap()), wrapper, false);
     }
     
-    protected String buildUri(String url, Collection vectorized, Map<String, ? extends Object> parameters) {
+    protected String buildUri(String url, Collection<Object> vectorized, Map<String, ? extends Object> parameters) {
         return buildUri(String.format(url, combine(vectorized)), parameters);
     }
 
@@ -64,7 +64,7 @@ public class StackExchangeBaseService extends AbstractSocialNetworkService {
      * @param vectorized
      * @return 
      */
-    protected String combine(Collection vectorized) {
+    protected String combine(Collection<Object> vectorized) {
         StringBuilder sOut = new StringBuilder();
         for(Object o : vectorized) {
             if(sOut.length()>0)
