@@ -13,6 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>agorava-stackoverflow</name>
+	<licenses>
+		<license>
+			<name>GNU Library or Lesser General Public License (LGPL)</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
     <properties>
   <!-- version used as long as agorava-stackoverflow is not in the official release train -->
         <agorava.version>0.5.0-SNAPSHOT</agorava.version>
@@ -38,29 +45,78 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+	<scm>
+		<url>https://github.com/Riduidel/agorava-stackoverflow.git</url>
+		<connection>scm:git:ssh://git@github.com/Riduidel/agorava-stackoverflow.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/Riduidel/agorava-stackoverflow.git</developerConnection>
+	</scm>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://buildhive.cloudbees.com/job/Riduidel/job/agorava-stackoverflow/</url>
+		<notifiers>
+			<notifier>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnError>true</sendOnError>
+				<sendOnWarning>true</sendOnWarning>
+				<sendOnSuccess>false</sendOnSuccess>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+	<organization>
+		<name>Agorava</name>
+		<url>www.agorava.org</url>
+	</organization>
     <build>
         <!-- Defining it in parent, to be sure arquilian works well -->
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <plugin>
-                <!-- Added to allow site to be generated from a markdown source (which could be a copy of github site)
-                See http://code.google.com/p/doxia-module-markdown/wiki/Usage for more infos
-                And edit using http://homepage.univie.ac.at/werner.robitza/markdown/ (as an example)
-                -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                        <version>1.3</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <inputEncoding>UTF-8</inputEncoding>
-                    <outputEncoding>UTF-8</outputEncoding>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-markdown</artifactId>
+						<version>1.3</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<!-- site-deploy is now handled by the github site plugin -->
+					<skipDeploy>true</skipDeploy>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.6</version>
+				<configuration>
+					<message>Creating site for ${project.artifactId} in ${project.distributionManagement.site.url}</message>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site-deploy</phase>
+						<configuration>
+							<path>${project.distributionManagement.site.url}</path>
+							<merge>true</merge>
+							<repositoryName>agorava-stackoverflow</repositoryName>
+							<repositoryOwner>${github.global.userName}</repositoryOwner>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
     </build>
+	<distributionManagement>
+		<site>
+			<id>github-pages-site</id>
+			<name>Deployment through GitHub's site deployment plugin</name>
+			<url>site/${project.version}</url>
+		</site>
+	</distributionManagement>
 </project>
