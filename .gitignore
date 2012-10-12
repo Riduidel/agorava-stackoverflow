@@ -6,3 +6,5 @@
 *.ear
 /agorava-stackoverflow-api/target/
 /agorava-stackoverflow-cdi/target/
+*.iml
+atlassian-ide-plugin.xml
