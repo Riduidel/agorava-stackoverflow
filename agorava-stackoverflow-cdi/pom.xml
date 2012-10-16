@@ -90,25 +90,26 @@
                 <dependency>
                     <groupId>org.jboss.arquillian.container</groupId>
                     <artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
-                    <version>1.0.0.CR3</version>
+                    <version>${arquillian-weld-ee-embedded.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.jboss.weld</groupId>
                     <artifactId>weld-core</artifactId>
-                    <version>1.1.5.Final</version>
+                    <version>${weld-core.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-simple</artifactId>
-                    <version>1.6.4</version>
+                    <version>${slf4j-simple.version}</version>
                     <scope>test</scope>
                 </dependency>
 
                 <dependency>
                     <groupId>org.jboss.solder</groupId>
                     <artifactId>solder-impl</artifactId>
+		    <version>${solder-impl.version}</version>
                 </dependency>
             </dependencies>
 

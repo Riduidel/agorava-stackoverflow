@@ -5,7 +5,7 @@
     <parent>
         <artifactId>agorava-parent</artifactId>
         <groupId>org.agorava</groupId>
-        <version>0.5.0-SNAPSHOT</version>
+        <version>0.5.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.agorava</groupId>
@@ -21,8 +21,7 @@
 		</license>
 	</licenses>
     <properties>
-  <!-- version used as long as agorava-stackoverflow is not in the official release train -->
-        <agorava.version>0.5.0-SNAPSHOT</agorava.version>
+	<solder-impl.version>3.1.1.Final</solder-impl.version>
     </properties>
     <modules>
         <module>agorava-stackoverflow-api</module>
