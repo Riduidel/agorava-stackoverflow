@@ -5,7 +5,6 @@
 package org.agorava.stackexchange;
 
 import org.agorava.core.cdi.AbstractSocialMediaApiHub;
-import org.jboss.solder.logging.Logger;
 
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -16,8 +15,6 @@ import javax.inject.Inject;
 public class StackExchangeServiceHub extends AbstractSocialMediaApiHub {
     public static final String MEDIA_NAME = "StackExchange";
 
-    @Inject
-    Logger logger;
 
     @Inject
     Instance<StackExchangeBaseService> services;
