@@ -1,18 +1,18 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-             
-    <parent>
-        <artifactId>agorava-parent</artifactId>
-        <groupId>org.agorava</groupId>
-        <version>0.5.0</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.agorava</groupId>
-    <artifactId>agorava-stackoverflow</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>agorava-stackoverflow</name>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>agorava-parent</artifactId>
+		<groupId>org.agorava</groupId>
+		<version>0.5.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.agorava</groupId>
+	<artifactId>agorava-stackoverflow</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>agorava-stackoverflow</name>
 	<licenses>
 		<license>
 			<name>GNU Library or Lesser General Public License (LGPL)</name>
@@ -20,30 +20,33 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-    <properties>
-	<solder-impl.version>3.1.1.Final</solder-impl.version>
-    </properties>
-    <modules>
-        <module>agorava-stackoverflow-api</module>
-        <module>agorava-stackoverflow-cdi</module>
-    </modules>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.agorava</groupId>
-                <artifactId>agorava-parent</artifactId>
-                <version>${agorava.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.agorava</groupId>
-                <artifactId>agorava-core-cdi</artifactId>
-                <version>${agorava.version}</version>
-                <scope>compile</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<properties>
+		<agorava-core.version>0.5.0</agorava-core.version>
+		<core.version>${agorava-core.version}</core.version>
+		<jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
+		<solder-impl.version>3.1.1.Final</solder-impl.version>
+	</properties>
+	<modules>
+		<module>agorava-stackoverflow-api</module>
+		<module>agorava-stackoverflow-cdi</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-parent</artifactId>
+				<version>${agorava-core.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-core-cdi</artifactId>
+				<version>${agorava-core.version}</version>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<scm>
 		<url>https://github.com/Riduidel/agorava-stackoverflow.git</url>
 		<connection>scm:git:ssh://git@github.com/Riduidel/agorava-stackoverflow.git</connection>
@@ -61,14 +64,28 @@
 			</notifier>
 		</notifiers>
 	</ciManagement>
+
+	<developers>
+		<developer>
+			<name>Nicolas Delsaux</name>
+			<url>http://twitter.com/riduidel</url>
+			<email>nicolas.delsaux@gmail.com</email>
+			<organization>Agorava</organization>
+			<organizationUrl>http://agorava.org</organizationUrl>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>CET</timezone>
+		</developer>
+	</developers>
 	<organization>
 		<name>Agorava</name>
 		<url>www.agorava.org</url>
 	</organization>
-    <build>
-        <!-- Defining it in parent, to be sure arquilian works well -->
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
+	<build>
+		<!-- Defining it in parent, to be sure arquilian works well -->
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
@@ -92,7 +109,8 @@
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.6</version>
 				<configuration>
-					<message>Creating site for ${project.artifactId} in ${project.distributionManagement.site.url}</message>
+					<message>Creating site for ${project.artifactId} in
+						${project.distributionManagement.site.url}</message>
 				</configuration>
 				<executions>
 					<execution>
@@ -109,8 +127,8 @@
 					</execution>
 				</executions>
 			</plugin>
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 	<distributionManagement>
 		<site>
 			<id>github-pages-site</id>

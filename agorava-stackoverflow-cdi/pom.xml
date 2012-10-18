@@ -109,7 +109,7 @@
                 <dependency>
                     <groupId>org.jboss.solder</groupId>
                     <artifactId>solder-impl</artifactId>
-		    <version>${solder-impl.version}</version>
+				    <version>${solder-impl.version}</version>
                 </dependency>
             </dependencies>
 

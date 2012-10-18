@@ -16,4 +16,3 @@ public interface StackExchangeRevisionsService extends StackExchangeURIs {
     public RevisionsWrapper getRevisions(StackExchangeQueryParameters<Date> query, String... ids);
 
 }
-X

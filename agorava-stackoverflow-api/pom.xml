@@ -1,18 +1,42 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>agorava-stackoverflow</artifactId>
-        <groupId>org.agorava</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>agorava-stackoverflow-api</artifactId>
-    <name>agorava-stackoverflow-api</name>
-    <dependencies>
-        <dependency>
-            <groupId>org.agorava</groupId>
-            <artifactId>agorava-core-api</artifactId>
-        </dependency>
-    </dependencies>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>agorava-stackoverflow</artifactId>
+		<groupId>org.agorava</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>agorava-stackoverflow-api</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>org.agorava</groupId>
+			<artifactId>agorava-core-api</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.googlecode.jsonschema2pojo</groupId>
+				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+				<version>${jsonschema2pojo.version}</version>
+				<configuration>
+					<sourceType>json</sourceType>
+					<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+					<targetPackage>org.agorava.stackexchange.model</targetPackage>
+					<!-- plugin add this directory as source root to maven, but NOT not m2eclipse (known bug of m2eclipse) -->
+					<outputDirectory>${project.build.directory}/generated/json</outputDirectory>
+					<generateBuilders>true</generateBuilders>
+					
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
