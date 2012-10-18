@@ -1,4 +1,3 @@
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
@@ -10,6 +9,10 @@
     <artifactId>agorava-stackoverflow-cdi</artifactId>
     <name>agorava-stackoverflow-cdi</name>
     <dependencies>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+        </dependency>
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
@@ -28,9 +31,15 @@
             <artifactId>agorava-core-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jboss.ejb3</groupId>
-            <artifactId>jboss-ejb3-api</artifactId>
-            <version>3.1.0</version>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <version>1.0.2.Final</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -107,9 +116,8 @@
                 </dependency>
 
                 <dependency>
-                    <groupId>org.jboss.solder</groupId>
-                    <artifactId>solder-impl</artifactId>
-				    <version>${solder-impl.version}</version>
+                    <groupId>org.agorava</groupId>
+                    <artifactId>solder-generics-impl</artifactId>
                 </dependency>
             </dependencies>
 
