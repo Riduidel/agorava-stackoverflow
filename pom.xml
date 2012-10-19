@@ -64,7 +64,13 @@
 				<version>${agorava-core.version}</version>
 				<scope>compile</scope>
 			</dependency>
-		</dependencies>
+            <dependency>
+                <groupId>org.agorava</groupId>
+                <artifactId>agorava-core-impl-cdi</artifactId>
+                <version>${agorava-core.version}</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
 	</dependencyManagement>
 	<scm>
 		<url>https://github.com/Riduidel/agorava-stackoverflow.git</url>
