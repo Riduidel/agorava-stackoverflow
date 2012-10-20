@@ -17,3 +17,6 @@ atlassian-ide-plugin.xml
 */.settings/*
 .classpath
 .project
+
+#Mac File#
+*.DS_Store
