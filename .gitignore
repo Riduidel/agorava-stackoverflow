@@ -4,7 +4,16 @@
 *.jar
 *.war
 *.ear
-/agorava-stackoverflow-api/target/
-/agorava-stackoverflow-cdi/target/
-*.iml
+
+# Maven folders #
+*/target/
+
+
+# IntelliJ files #
 atlassian-ide-plugin.xml
+*.iml
+
+# Eclipse files #
+*/.settings/*
+.classpath
+.project
