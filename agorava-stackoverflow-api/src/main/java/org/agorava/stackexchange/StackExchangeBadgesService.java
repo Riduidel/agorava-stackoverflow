@@ -16,13 +16,13 @@ public interface StackExchangeBadgesService extends StackExchangeURIs {
      * defined from https://api.stackexchange.com/docs/badges
      */
     public static final String SITE_BADGES = "badges/";
-    public static final String SITE_BADGES_WITH_IDS = "badges/{0}";
+    public static final String SITE_BADGES_WITH_IDS = "badges/%s";
    
     /**
      * defined from https://api.stackexchange.com/docs/badge-recipients
      */
     public static final String SITE_BADGES_RECIPIENTS = "badges/recipients";
-    public static final String SITE_BADGES_RECIPIENTS_WITH_IDS = "badges/{0}/recipients";
+    public static final String SITE_BADGES_RECIPIENTS_WITH_IDS = "badges/%s/recipients";
    
     /**
      * defined from https://api.stackexchange.com/docs/badges-by-name

@@ -49,6 +49,7 @@ public class Site {
     public String site_url;
     public String audience;
     public String icon_url;
+    public String high_resolution_icon_url;
     public State site_state;
     /**
      * may be absent

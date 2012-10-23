@@ -16,7 +16,7 @@ public interface StackExchangeAnswersService extends StackExchangeURIs {
      * defined from https://api.stackexchange.com/docs/answers
      */
     public static final String SITE_ANSWERS = "answers/";
-    public static final String SITE_ANSWERS_WITH_IDS = "answers/{0}";
+    public static final String SITE_ANSWERS_WITH_IDS = "answers/%s";
     
     /**
      * Get answers with query parameters.

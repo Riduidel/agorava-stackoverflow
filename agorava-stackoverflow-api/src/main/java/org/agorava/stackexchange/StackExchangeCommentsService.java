@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public interface StackExchangeCommentsService extends StackExchangeURIs {
     public static final String COMMENTS_URI = "comments";
-    public static final String COMMENTS_URI_WITH_IDS = "comments/{0}";
+    public static final String COMMENTS_URI_WITH_IDS = "comments/%s";
     CommentsWrapper getComments(StackExchangeQueryParameters<Date> query);
     CommentsWrapper getComments(StackExchangeQueryParameters<Date> query, Integer...ids);
 }

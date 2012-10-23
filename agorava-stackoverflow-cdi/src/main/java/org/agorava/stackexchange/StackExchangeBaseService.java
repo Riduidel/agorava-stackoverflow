@@ -43,7 +43,7 @@ public class StackExchangeBaseService extends AbstractSocialMediaApi {
 
     /**
      * @param <WrapperClass>
-     * @param uri            in that case, that uri must have a "{0}" element that will receive filter vectorized values
+     * @param uri in that case, that uri must have a "%s" element that will receive filter vectorized values
      * @param wrapper
      * @param query
      * @param vectorized
@@ -53,8 +53,24 @@ public class StackExchangeBaseService extends AbstractSocialMediaApi {
         return getService().get(buildUri(uri, vectorized, query.toMap()), wrapper, false);
     }
 
-    protected String buildUri(String url, Collection vectorized, Map<String, ? extends Object> parameters) {
-        return buildUri(String.format(url, combine(vectorized)), parameters);
+    /**
+     * Format given uri with the collection of given query element and query parameters.
+     * Notice {@link #getApiRootUrl()} is preprended if required
+     * @param url base url
+     * @param path path elemnts to insert in query
+     * @param parameters query parameters
+     * @return an absolute url usable by service
+     */
+    protected String buildUri(String url, Collection path, Map<String, ? extends Object> parameters) {
+        String formattedUri = String.format(buildUri(url), combine(path));
+		return buildUri(formattedUri, parameters);
+    }
+    
+    @Override
+    public String buildUri(String url) {
+        if(!url.startsWith(getApiRootUrl()))
+        	url = getApiRootUrl()+url;
+        return super.buildUri(url);
     }
 
     /**

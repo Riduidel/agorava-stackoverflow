@@ -18,12 +18,12 @@ import org.agorava.stackexchange.model.wrappers.CommentsWrapper;
  */
 public interface StackExchangeQuestionsService extends StackExchangeURIs {
     public static final String QUESTIONS_URI = "questions";
-    public static final String QUESTIONS_URI_WITH_IDS = "questions/{0}";
-    public static final String QUESTIONS_ANSWERS = "questions/{0}/answers";
-    public static final String QUESTIONS_COMMENTS = "questions/{0}/comments";
-    public static final String QUESTIONS_LINKED = "questions/{0}/linked";
-    public static final String QUESTIONS_RELATED = "questions/{0}/related";
-    public static final String QUESTIONS_TIMELINE = "questions/{0}/timeline";
+    public static final String QUESTIONS_URI_WITH_IDS = "questions/%s";
+    public static final String QUESTIONS_ANSWERS = "questions/%s/answers";
+    public static final String QUESTIONS_COMMENTS = "questions/%s/comments";
+    public static final String QUESTIONS_LINKED = "questions/%s/linked";
+    public static final String QUESTIONS_RELATED = "questions/%s/related";
+    public static final String QUESTIONS_TIMELINE = "questions/%s/timeline";
     public static final String QUESTIONS_FEATURED = "questions/featured";
     public static final String QUESTIONS_UNANSWERED = "questions/unanswered";
     public static final String QUESTIONS_NO_ANSWERS = "questions/no-answers";

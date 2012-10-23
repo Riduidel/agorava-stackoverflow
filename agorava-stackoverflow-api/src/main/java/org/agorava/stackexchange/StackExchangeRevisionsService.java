@@ -6,7 +6,7 @@ import org.agorava.stackexchange.model.wrappers.QuestionsWrapper;
 import org.agorava.stackexchange.model.wrappers.RevisionsWrapper;
 
 public interface StackExchangeRevisionsService extends StackExchangeURIs {
-    public static final String REVISIONS_URI_WITH_IDS = "revisions/{0}";
+    public static final String REVISIONS_URI_WITH_IDS = "revisions/%s";
 	/**
 	 * Get revisions corresponding to questions with the given set of ids
 	 * @param query

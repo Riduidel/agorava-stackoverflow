@@ -35,6 +35,9 @@ public class StackExchangeInfosServiceImpl extends StackExchangeBaseService impl
         while(returned.getHas_more()) {
             SitesWrapper local = getService().get(buildUri(ALL_SITES, parameters.toMap()), SitesWrapper.class, false);
             returned.setHas_more(local.getHas_more());
+            if(local.getHas_more()) {
+            	parameters.setPage(parameters.getPage()+1);
+            }
             returned.setQuota_remaining(local.getQuota_remaining());
             returned.getItems().addAll(local.getItems());
         }
