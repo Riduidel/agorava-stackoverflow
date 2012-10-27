@@ -49,5 +49,9 @@ public class StackExchangeAnswersServiceTest extends StackExchangeTest {
         // currently StackExchange API only return one "items" object, containing infos for the current site
         // so this collections is expected to contain only one item as of now
         assertThat(found.getItems().size(), Is.is(2));
+//        Answer first = found.getItems().get(0);
+//        assertThat(first.link, Is.is("some link"));
+//        Answer second = found.getItems().get(1);
+//        assertThat(second.link, Is.is("some link"));
     }
 }
