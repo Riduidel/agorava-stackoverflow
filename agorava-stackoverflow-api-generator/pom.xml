@@ -11,7 +11,8 @@
 	<description>a generator project abusing some components to produce code</description>
 	<properties>
 		<element.to.generate>${artifactId}</element.to.generate>
-		<jsonschema2pojo.directory>${project.basedir}/../agorava-stackoverflow-api/src/generated</jsonschema2pojo.directory>
+		<!-- path is invalid in this project, but will become valid once in subdirectories (not very clean, but nevertheless efficient -->
+		<jsonschema2pojo.directory>${project.basedir}/../../agorava-stackoverflow-api/src/generated</jsonschema2pojo.directory>
 		<jsonschema2pojo.source.directory>${jsonschema2pojo.directory}/json</jsonschema2pojo.source.directory>
 		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/json-pojos</jsonschema2pojo.output.directory>
 	</properties>
@@ -69,7 +70,15 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>answers</module>
 		<module>agorava-stackoverflow-api-generated</module>
+		<module>answers</module>
+		<module>badges</module>
+		<module>comments</module>
+		<module>infos</module>
+		<module>posts</module>
+		<module>privileges</module>
+		<module>questions</module>
+		<module>tags</module>
+		<module>users</module>
 	</modules>
 </project>

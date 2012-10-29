@@ -9,6 +9,7 @@
 	<artifactId>answers</artifactId>
 	<packaging>pom</packaging>
 	<properties>
+		<element.to.generate>${artifactId}</element.to.generate>
 		<query.to.use>/2.1/answers?order=desc&amp;sort=activity&amp;site=stackoverflow&amp;filter=!nQVDObG3Lx</query.to.use>
 	</properties>
 	<build>
