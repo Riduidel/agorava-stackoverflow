@@ -173,4 +173,12 @@
 			<url>site/${project.version}</url>
 		</site>
 	</distributionManagement>
+	<profiles>
+		<profile>
+			<id>generate-model</id>
+			<modules>
+				<module>agorava-stackoverflow-api-generator</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>

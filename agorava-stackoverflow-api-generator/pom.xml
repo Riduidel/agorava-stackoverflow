@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.agorava</groupId>
+		<artifactId>agorava-stackoverflow</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>agorava-stackoverflow-api-generator</artifactId>
+	<packaging>pom</packaging>
+	<description>a generator project abusing some components to produce code</description>
+	<properties>
+		<element.to.generate>${artifactId}</element.to.generate>
+		<jsonschema2pojo.source.directory>${project.build.directory}/generated/json</jsonschema2pojo.source.directory>
+		<jsonschema2pojo.output.directory>${project.build.directory}/src/generated/json-pojos</jsonschema2pojo.output.directory>
+	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>wagon-maven-plugin</artifactId>
+					<version>1.0-beta-3</version>
+					<executions>
+						<execution>
+							<phase>initialize</phase>
+							<goals>
+								<goal>download-single</goal>
+							</goals>
+							<configuration>
+								<url>http://api.stackexchange.com</url>
+								<fromFile>${query.to.use}</fromFile>
+								<toFile>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</toFile>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>com.googlecode.jsonschema2pojo</groupId>
+					<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+					<version>${jsonschema2pojo.version}</version>
+					<configuration>
+						<!-- stackexchange doesn't publish schema, so deal with example files -->
+						<sourceType>json</sourceType>
+						<!-- plugin add this directory as source root to maven, but NOT not 
+							m2eclipse (known bug of m2eclipse) -->
+						<outputDirectory>${jsonschema2pojo.output.directory}</outputDirectory>
+						<generateBuilders>true</generateBuilders>
+						<!-- we use jackson 1.9.4 (see jackson.version property for more details) -->
+						<annotationStyle>jackson1</annotationStyle>
+						<propertyWordDelimiters>_</propertyWordDelimiters>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+							<configuration>
+								<sourcePaths>
+									<sourcePath>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</sourcePath>
+								</sourcePaths>
+								<targetPackage>org.agorava.stackexchange.model.${element.to.generate}</targetPackage>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>answers</module>
+	</modules>
+</project>
