@@ -8,6 +8,10 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>agorava-stackoverflow-api</artifactId>
+	<properties>
+		<jsonschema2pojo.source.directory>${project.basedir}/src/generated/json</jsonschema2pojo.source.directory>
+		<jsonschema2pojo.output.directory>${project.basedir}/src/generated/json-pojos</jsonschema2pojo.output.directory>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.agorava</groupId>
@@ -24,32 +28,84 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.googlecode.jsonschema2pojo</groupId>
-				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
-				<version>${jsonschema2pojo.version}</version>
-				<configuration>
-					<!-- stackexchange doesn't publish schema, so deal with example files -->
-					<sourceType>json</sourceType>
-					<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
-					<targetPackage>org.agorava.stackexchange.model</targetPackage>
-					<!-- plugin add this directory as source root to maven, but NOT not 
-						m2eclipse (known bug of m2eclipse) -->
-					<outputDirectory>${project.build.directory}/generated/json</outputDirectory>
-					<generateBuilders>true</generateBuilders>
-					<!-- we use jackson 1.9.4 (see jackson.version property for more details) -->
-					<annotationStyle>jackson1</annotationStyle>
-					<propertyWordDelimiters>_</propertyWordDelimiters>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+	<profiles>
+		<profile>
+			<id>add-generated-model</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<id>add-source</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>add-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${jsonschema2pojo.output.directory}</source>
+									</sources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- due to some limitation of jsonschema2pojo, generation of model has 
+			been moved in a profile that is to be activated BY HAND. In that profile, 
+			for each model element, one request is performed, obtaining all data, then 
+			this query result is stored in src/generated/json. Finally, by using jsonschema2pojo, 
+			some model elements are generated. BEWARE : those model elements are modified 
+			by hand after usage of that plugin. As a consequence, each run may destruct 
+			some code written. So, run full compile before comitting ! -->
+		<profile>
+			<id>generate-model</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.googlecode.jsonschema2pojo</groupId>
+						<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+						<version>${jsonschema2pojo.version}</version>
+						<configuration>
+							<!-- stackexchange doesn't publish schema, so deal with example files -->
+							<sourceType>json</sourceType>
+							<sourceDirectory>${jsonschema2pojo.source.directory}</sourceDirectory>
+							<targetPackage>org.agorava.stackexchange.model</targetPackage>
+							<!-- plugin add this directory as source root to maven, but NOT not 
+								m2eclipse (known bug of m2eclipse) -->
+							<outputDirectory>${jsonschema2pojo.output.directory}</outputDirectory>
+							<generateBuilders>true</generateBuilders>
+							<!-- we use jackson 1.9.4 (see jackson.version property for more details) -->
+							<annotationStyle>jackson1</annotationStyle>
+							<propertyWordDelimiters>_</propertyWordDelimiters>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
