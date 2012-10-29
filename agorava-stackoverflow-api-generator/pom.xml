@@ -11,8 +11,9 @@
 	<description>a generator project abusing some components to produce code</description>
 	<properties>
 		<element.to.generate>${artifactId}</element.to.generate>
-		<jsonschema2pojo.source.directory>${project.build.directory}/generated/json</jsonschema2pojo.source.directory>
-		<jsonschema2pojo.output.directory>${project.build.directory}/src/generated/json-pojos</jsonschema2pojo.output.directory>
+		<jsonschema2pojo.directory>${project.basedir}/../agorava-stackoverflow-api/src/generated</jsonschema2pojo.directory>
+		<jsonschema2pojo.source.directory>${jsonschema2pojo.directory}/json</jsonschema2pojo.source.directory>
+		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/json-pojos</jsonschema2pojo.output.directory>
 	</properties>
 	<build>
 		<pluginManagement>
@@ -69,5 +70,6 @@
 	</build>
 	<modules>
 		<module>answers</module>
+		<module>agorava-stackoverflow-api-generated</module>
 	</modules>
 </project>
