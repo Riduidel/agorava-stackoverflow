@@ -18,62 +18,62 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @Generated("com.googlecode.jsonschema2pojo")
 @JsonPropertyOrder({
-    "link_color",
-    "tag_foreground_color",
-    "tag_background_color"
+    "gold",
+    "silver",
+    "bronze"
 })
-public class Styling {
+public class BadgeCounts {
 
-    @JsonProperty("link_color")
-    private String linkColor;
-    @JsonProperty("tag_foreground_color")
-    private String tagForegroundColor;
-    @JsonProperty("tag_background_color")
-    private String tagBackgroundColor;
+    @JsonProperty("gold")
+    private Integer gold;
+    @JsonProperty("silver")
+    private Integer silver;
+    @JsonProperty("bronze")
+    private Integer bronze;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("link_color")
-    public String getLinkColor() {
-        return linkColor;
+    @JsonProperty("gold")
+    public Integer getGold() {
+        return gold;
     }
 
-    @JsonProperty("link_color")
-    public void setLinkColor(String linkColor) {
-        this.linkColor = linkColor;
+    @JsonProperty("gold")
+    public void setGold(Integer gold) {
+        this.gold = gold;
     }
 
-    public Styling withLinkColor(String linkColor) {
-        this.linkColor = linkColor;
+    public BadgeCounts withGold(Integer gold) {
+        this.gold = gold;
         return this;
     }
 
-    @JsonProperty("tag_foreground_color")
-    public String getTagForegroundColor() {
-        return tagForegroundColor;
+    @JsonProperty("silver")
+    public Integer getSilver() {
+        return silver;
     }
 
-    @JsonProperty("tag_foreground_color")
-    public void setTagForegroundColor(String tagForegroundColor) {
-        this.tagForegroundColor = tagForegroundColor;
+    @JsonProperty("silver")
+    public void setSilver(Integer silver) {
+        this.silver = silver;
     }
 
-    public Styling withTagForegroundColor(String tagForegroundColor) {
-        this.tagForegroundColor = tagForegroundColor;
+    public BadgeCounts withSilver(Integer silver) {
+        this.silver = silver;
         return this;
     }
 
-    @JsonProperty("tag_background_color")
-    public String getTagBackgroundColor() {
-        return tagBackgroundColor;
+    @JsonProperty("bronze")
+    public Integer getBronze() {
+        return bronze;
     }
 
-    @JsonProperty("tag_background_color")
-    public void setTagBackgroundColor(String tagBackgroundColor) {
-        this.tagBackgroundColor = tagBackgroundColor;
+    @JsonProperty("bronze")
+    public void setBronze(Integer bronze) {
+        this.bronze = bronze;
     }
 
-    public Styling withTagBackgroundColor(String tagBackgroundColor) {
-        this.tagBackgroundColor = tagBackgroundColor;
+    public BadgeCounts withBronze(Integer bronze) {
+        this.bronze = bronze;
         return this;
     }
 

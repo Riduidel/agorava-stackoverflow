@@ -31,8 +31,8 @@ public class StackExchangeAnswersServiceTest extends StackExchangeTest {
     public void ensureSiteHasAnswers() {
         AnswersWrapper found = answers.getAnswers(new StackExchangeQueryParameters<Date>());
         assertThat(found, IsNull.notNullValue());
-        assertThat(found.getQuota_max().intValue(), IsNot.not(0));
-        assertThat(found.getQuota_remaining().intValue(), IsNot.not(0));
+        assertThat(found.getQuotaMax().intValue(), IsNot.not(0));
+        assertThat(found.getQuotaRemaining().intValue(), IsNot.not(0));
         // currently StackExchange API only return one "items" object, containing infos for the current site
         // so this collections is expected to contain only one item as of now
         assertThat(found.getItems().size(), IsNot.not(0));
@@ -44,8 +44,8 @@ public class StackExchangeAnswersServiceTest extends StackExchangeTest {
     public void ensureStackoverflowHasAnAnswerWithTheIds2426513And2453337() {
         AnswersWrapper found = answers.getAnswers(new StackExchangeQueryParameters<Date>(), 2426513, 2453337);
         assertThat(found, IsNull.notNullValue());
-        assertThat(found.getQuota_max().intValue(), IsNot.not(0));
-        assertThat(found.getQuota_remaining().intValue(), IsNot.not(0));
+        assertThat(found.getQuotaMax().intValue(), IsNot.not(0));
+        assertThat(found.getQuotaRemaining().intValue(), IsNot.not(0));
         // currently StackExchange API only return one "items" object, containing infos for the current site
         // so this collections is expected to contain only one item as of now
         assertThat(found.getItems().size(), Is.is(2));

@@ -2,7 +2,6 @@ package org.agorava.stackexchange;
 
 import java.util.Date;
 
-import org.agorava.stackexchange.model.wrappers.QuestionsWrapper;
 import org.agorava.stackexchange.model.wrappers.RevisionsWrapper;
 
 public interface StackExchangeRevisionsService extends StackExchangeURIs {

@@ -20,7 +20,7 @@ public class PrivilegesWrapper extends AbstractWrapper<Privilege> {
         if(shortDesc==null)
             return null;
         for(Privilege p : getItems()) {
-            if(shortDesc.equals(p.getShort_description())) {
+            if(shortDesc.equals(p.getShortDescription())) {
                 return p;
             }
         }

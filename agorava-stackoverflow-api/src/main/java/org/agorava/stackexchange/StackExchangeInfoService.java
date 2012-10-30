@@ -4,10 +4,9 @@
  */
 package org.agorava.stackexchange;
 
-import java.util.Date;
-import org.agorava.stackexchange.model.wrappers.SitesWrapper;
 import org.agorava.stackexchange.model.wrappers.InfosWrapper;
 import org.agorava.stackexchange.model.wrappers.PrivilegesWrapper;
+import org.agorava.stackexchange.model.wrappers.SitesWrapper;
 
 /**
  * Interface providing access to global site infos

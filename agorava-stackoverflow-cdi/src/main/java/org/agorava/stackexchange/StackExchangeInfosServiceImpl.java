@@ -27,18 +27,18 @@ public class StackExchangeInfosServiceImpl extends StackExchangeBaseService impl
     @Override
     public SitesWrapper getSites() {
         SitesWrapper returned = new SitesWrapper();
-        returned.setHas_more(true);
+        returned.setHasMore(true);
         StackExchangeQueryParameters<Object> parameters = new StackExchangeQueryParameters<Object>();
         parameters.setSite(null);
         parameters.setPage(StackExchangeQueryParameters.FIRST_PAGE);
         parameters.setPagesize(StackExchangeQueryParameters.MAX_PAGE_SIZE);
-        while(returned.getHas_more()) {
+        while(returned.getHasMore()) {
             SitesWrapper local = getService().get(buildUri(ALL_SITES, parameters.toMap()), SitesWrapper.class, false);
-            returned.setHas_more(local.getHas_more());
-            if(local.getHas_more()) {
+            returned.setHasMore(local.getHasMore());
+            if(local.getHasMore()) {
             	parameters.setPage(parameters.getPage()+1);
             }
-            returned.setQuota_remaining(local.getQuota_remaining());
+            returned.setQuotaRemaining(local.getQuotaRemaining());
             returned.getItems().addAll(local.getItems());
         }
         return returned;

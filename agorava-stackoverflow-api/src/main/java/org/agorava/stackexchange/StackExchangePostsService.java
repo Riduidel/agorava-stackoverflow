@@ -4,11 +4,12 @@
  */
 package org.agorava.stackexchange;
 
-import org.agorava.stackexchange.model.wrappers.SuggestedEditsWrapper;
-import org.agorava.stackexchange.model.wrappers.RevisionsWrapper;
-import org.agorava.stackexchange.model.wrappers.PostsWrapper;
 import java.util.Date;
+
 import org.agorava.stackexchange.model.wrappers.CommentsWrapper;
+import org.agorava.stackexchange.model.wrappers.PostsWrapper;
+import org.agorava.stackexchange.model.wrappers.RevisionsWrapper;
+import org.agorava.stackexchange.model.wrappers.SuggestedEditsWrapper;
 
 /**
  *

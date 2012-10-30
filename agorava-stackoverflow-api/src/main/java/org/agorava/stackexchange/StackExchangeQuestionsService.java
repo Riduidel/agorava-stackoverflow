@@ -4,13 +4,12 @@
  */
 package org.agorava.stackexchange;
 
-import org.agorava.stackexchange.model.wrappers.QuestionsWrapper;
 import java.util.Collection;
 import java.util.Date;
-import org.agorava.stackexchange.StackExchangeQueryParameters;
-import org.agorava.stackexchange.StackExchangeURIs;
+
 import org.agorava.stackexchange.model.wrappers.AnswersWrapper;
 import org.agorava.stackexchange.model.wrappers.CommentsWrapper;
+import org.agorava.stackexchange.model.wrappers.QuestionsWrapper;
 
 /**
  *

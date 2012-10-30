@@ -5,6 +5,7 @@
 package org.agorava.stackexchange;
 
 import java.util.Date;
+
 import org.agorava.stackexchange.model.wrappers.AnswersWrapper;
 
 /**

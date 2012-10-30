@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import org.agorava.stackexchange.model.wrappers.InfosWrapper;
 import org.agorava.stackexchange.model.Privilege;
 import org.agorava.stackexchange.model.wrappers.PrivilegesWrapper;
-import org.agorava.stackexchange.model.SiteSpecificStats;
+import org.agorava.stackexchange.model.SiteStats;
 import org.agorava.stackexchange.model.wrappers.SitesWrapper;
 import org.hamcrest.core.IsNot;
 
@@ -33,7 +33,7 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 		SitesWrapper infos = info.getSites();
 		assertThat(infos, IsNull.notNullValue());
 		// assertThat(infos.getQuota_max().intValue(), IsNot.not(0));
-		assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));
+		assertThat(infos.getQuotaRemaining().intValue(), IsNot.not(0));
 		// currently StackExchange API only return one "items" object,
 		// containing infos for the current site
 		// so this collections is expected to contain only one item as of now
@@ -46,13 +46,13 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 		InfosWrapper infos = info.getInfos(new StackExchangeQueryParameters<Void>());
 		assertThat(infos, IsNull.notNullValue());
 		// assertThat(infos.getQuota_max().intValue(), IsNot.not(0));
-		assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));
+		assertThat(infos.getQuotaRemaining().intValue(), IsNot.not(0));
 		// currently StackExchange API only return one "items" object,
 		// containing infos for the current site
 		// so this collections is expected to contain only one item as of now
 		assertThat(infos.getItems().size(), Is.is(1));
-		SiteSpecificStats i = infos.getItems().get(0);
-		assertThat(i.getAnswers_per_minute().floatValue(), IsNot.not(0f));
+		SiteStats i = infos.getItems().get(0);
+		assertThat(i.getAnswersPerMinute().floatValue(), IsNot.not(0f));
 	}
 
 	@Test
@@ -60,7 +60,7 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 		PrivilegesWrapper infos = info.getPrivileges(new StackExchangeQueryParameters<Void>());
 		assertThat(infos, IsNull.notNullValue());
 		// assertThat(infos.getQuota_max().intValue(), IsNot.not(0));
-		assertThat(infos.getQuota_remaining().intValue(), IsNot.not(0));
+		assertThat(infos.getQuotaRemaining().intValue(), IsNot.not(0));
 		// currently StackExchange API only return one "items" object,
 		// containing infos for the current site
 		// so this collections is expected to contain only one item as of now
