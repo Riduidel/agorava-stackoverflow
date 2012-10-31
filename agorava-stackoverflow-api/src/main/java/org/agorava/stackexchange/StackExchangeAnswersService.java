@@ -20,6 +20,37 @@ public interface StackExchangeAnswersService extends StackExchangeURIs {
     public static final String SITE_ANSWERS_WITH_IDS = "answers/%s";
     
     /**
+     * Sort orders usable with {@link StackExchangeQueryParameters} for answers queries
+     * @author Nicolas
+     *
+     */
+    public static enum Sort {
+    	activity,
+		creation,
+		votes;
+    	
+    }
+    
+    /**
+     * StackExchange fields filters usable with ease on that service
+     * @author Nicolas
+     *
+     */
+    public static enum Filter {
+    	FullAnswer("!-u2CTDQ4");
+    	
+    	private final String text;
+
+		private Filter(String t) {
+    		this.text = t;
+    	}
+    	
+    	public String getText() {
+			return text;
+		}
+    }
+    
+    /**
      * Get answers with query parameters.
      * @param parameters in these parameters, min and max, when defined, have to be date values
      * @return an answer wrapper containing answers matching the given criterias

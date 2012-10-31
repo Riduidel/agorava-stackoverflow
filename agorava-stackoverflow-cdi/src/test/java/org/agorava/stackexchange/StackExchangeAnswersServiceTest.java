@@ -40,18 +40,25 @@ public class StackExchangeAnswersServiceTest extends StackExchangeTest {
     }
 
 
+    /**
+     * Obtain two answers by id and do some tests on these answers
+     */
     @Test
     public void ensureStackoverflowHasAnAnswerWithTheIds2426513And2453337() {
-        AnswersWrapper found = answers.getAnswers(new StackExchangeQueryParameters<Date>(), 2426513, 2453337);
+        StackExchangeQueryParameters<Date> stackExchangeQueryParameters = new StackExchangeQueryParameters<Date>();
+        // This filter allows me to have all answer fields set
+        stackExchangeQueryParameters.setFiler(StackExchangeAnswersService.Filter.FullAnswer.getText());
+        stackExchangeQueryParameters.setSort(StackExchangeAnswersService.Sort.creation.name());
+		AnswersWrapper found = answers.getAnswers(stackExchangeQueryParameters, 2426513, 2453337);
         assertThat(found, IsNull.notNullValue());
         assertThat(found.getQuotaMax().intValue(), IsNot.not(0));
         assertThat(found.getQuotaRemaining().intValue(), IsNot.not(0));
         // currently StackExchange API only return one "items" object, containing infos for the current site
         // so this collections is expected to contain only one item as of now
         assertThat(found.getItems().size(), Is.is(2));
-//        Answer first = found.getItems().get(0);
-//        assertThat(first.link, Is.is("some link"));
-//        Answer second = found.getItems().get(1);
-//        assertThat(second.link, Is.is("some link"));
+        Answer first = found.getItems().get(0);
+        assertThat(first.getLink(), Is.is("http://stackoverflow.com/questions/2453316/any-simple-shape-recognition-libraries-for-java/2453337#2453337"));
+        Answer second = found.getItems().get(1);
+        assertThat(second.getLink(), Is.is("http://stackoverflow.com/questions/2426444/intelligent-mapping-of-class-keys/2426513#2426513"));
     }
 }

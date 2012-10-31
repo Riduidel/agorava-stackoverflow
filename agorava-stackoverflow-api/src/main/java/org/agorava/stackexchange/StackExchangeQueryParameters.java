@@ -161,6 +161,10 @@ public class StackExchangeQueryParameters<RangeType> {
         return sort;
     }
 
+    /**
+     * When setting a sort order, service interface usually provides an enum with valid values. You are GREATLY encouraged to use that Sort enum instead of a random string.
+     * @param sort
+     */
     public void setSort(String sort) {
         this.sort = sort;
     }
