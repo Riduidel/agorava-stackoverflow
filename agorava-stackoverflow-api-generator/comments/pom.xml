@@ -9,19 +9,7 @@
 	<artifactId>comments</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<element.to.generate>${artifactId}</element.to.generate>
+		<element.to.generate>${project.artifactId}</element.to.generate>
 		<query.to.use>/2.1/comments?order=desc&amp;sort=creation&amp;site=stackoverflow&amp;filter=!-.mgWMfuvF_n</query.to.use>
 	</properties>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>wagon-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.googlecode.jsonschema2pojo</groupId>
-				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

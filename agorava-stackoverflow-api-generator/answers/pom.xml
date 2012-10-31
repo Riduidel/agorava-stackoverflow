@@ -9,19 +9,7 @@
 	<artifactId>answers</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<element.to.generate>${artifactId}</element.to.generate>
+		<element.to.generate>${project.artifactId}</element.to.generate>
 		<query.to.use>/2.1/answers?order=desc&amp;sort=activity&amp;site=stackoverflow&amp;filter=!nQVDObG3Lx</query.to.use>
 	</properties>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>wagon-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.googlecode.jsonschema2pojo</groupId>
-				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

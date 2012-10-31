@@ -11,64 +11,72 @@
 	<description>a generator project abusing some components to produce code</description>
 	<properties>
 		<element.to.generate>${artifactId}</element.to.generate>
-		<!-- path is invalid in this project, but will become valid once in subdirectories (not very clean, but nevertheless efficient -->
+		<!-- path is invalid in this project, but will become valid once in subdirectories 
+			(not very clean, but nevertheless efficient -->
 		<jsonschema2pojo.directory>${project.basedir}/../../agorava-stackoverflow-api/src/generated</jsonschema2pojo.directory>
 		<jsonschema2pojo.source.directory>${jsonschema2pojo.directory}/json</jsonschema2pojo.source.directory>
 		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/json-pojos</jsonschema2pojo.output.directory>
 	</properties>
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>wagon-maven-plugin</artifactId>
-					<version>1.0-beta-3</version>
-					<executions>
-						<execution>
-							<phase>initialize</phase>
-							<goals>
-								<goal>download-single</goal>
-							</goals>
-							<configuration>
-								<url>http://api.stackexchange.com</url>
-								<fromFile>${query.to.use}</fromFile>
-								<toFile>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</toFile>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>com.googlecode.jsonschema2pojo</groupId>
-					<artifactId>jsonschema2pojo-maven-plugin</artifactId>
-					<version>${jsonschema2pojo.version}</version>
-					<configuration>
-						<!-- stackexchange doesn't publish schema, so deal with example files -->
-						<sourceType>json</sourceType>
-						<!-- plugin add this directory as source root to maven, but NOT not 
-							m2eclipse (known bug of m2eclipse) -->
-						<outputDirectory>${jsonschema2pojo.output.directory}</outputDirectory>
-						<generateBuilders>true</generateBuilders>
-						<!-- we use jackson 1.9.4 (see jackson.version property for more details) -->
-						<annotationStyle>jackson1</annotationStyle>
-						<propertyWordDelimiters>_</propertyWordDelimiters>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>generate</goal>
-							</goals>
-							<configuration>
-								<sourcePaths>
-									<sourcePath>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</sourcePath>
-								</sourcePaths>
-								<targetPackage>org.agorava.stackexchange.model.${element.to.generate}</targetPackage>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+	<profiles>
+		<profile>
+			<activation>
+				<file>
+					<missing>README.md</missing>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<version>1.0-beta-3</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>download-single</goal>
+								</goals>
+								<configuration>
+									<url>http://api.stackexchange.com</url>
+									<fromFile>${query.to.use}</fromFile>
+									<toFile>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</toFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.googlecode.jsonschema2pojo</groupId>
+						<artifactId>jsonschema2pojo-maven-plugin</artifactId>
+						<version>${jsonschema2pojo.version}</version>
+						<configuration>
+							<!-- stackexchange doesn't publish schema, so deal with example files -->
+							<sourceType>json</sourceType>
+							<!-- plugin add this directory as source root to maven, but NOT not 
+								m2eclipse (known bug of m2eclipse) -->
+							<outputDirectory>${jsonschema2pojo.output.directory}</outputDirectory>
+							<generateBuilders>true</generateBuilders>
+							<!-- we use jackson 1.9.4 (see jackson.version property for more details) -->
+							<annotationStyle>jackson1</annotationStyle>
+							<propertyWordDelimiters>_</propertyWordDelimiters>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+								<configuration>
+									<sourcePaths>
+										<sourcePath>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</sourcePath>
+									</sourcePaths>
+									<targetPackage>org.agorava.stackexchange.model.${element.to.generate}</targetPackage>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<modules>
 		<module>agorava-stackoverflow-api-generated</module>
 		<module>answers</module>
