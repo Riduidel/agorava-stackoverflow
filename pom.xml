@@ -1,51 +1,51 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <artifactId>agorava-parent</artifactId>
-        <groupId>org.agorava</groupId>
-        <version>0.5.0</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.agorava</groupId>
-    <artifactId>agorava-stackoverflow</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>agorava-stackoverflow</name>
-    <licenses>
-        <license>
-            <name>GNU Library or Lesser General Public License (LGPL)</name>
-            <url>http://www.gnu.org/licenses/lgpl.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-    <properties>
-        <agorava-core.version>0.5.0</agorava-core.version>
-        <core.version>${agorava-core.version}</core.version>
-        <jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
-        <solder-impl.version>3.1.1.Final</solder-impl.version>
-    </properties>
-    <modules>
-        <module>agorava-stackoverflow-api</module>
-        <module>agorava-stackoverflow-cdi</module>
-        <module>agorava-stackoverflow-utils</module>
-    </modules>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.agorava</groupId>
-                <artifactId>agorava-parent</artifactId>
-                <version>${agorava-core.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.agorava</groupId>
-                <artifactId>agorava-core-impl-cdi</artifactId>
-                <version>${agorava-core.version}</version>
-                <scope>compile</scope>
-            </dependency>
-        </dependencies>
+	<parent>
+		<artifactId>agorava-parent</artifactId>
+		<groupId>org.agorava</groupId>
+		<version>0.5.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.agorava</groupId>
+	<artifactId>agorava-stackoverflow</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>agorava-stackoverflow</name>
+	<licenses>
+		<license>
+			<name>GNU Library or Lesser General Public License (LGPL)</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<properties>
+		<agorava-core.version>0.5.1-SNAPSHOT</agorava-core.version>
+		<core.version>${agorava-core.version}</core.version>
+		<jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
+		<solder-impl.version>3.1.1.Final</solder-impl.version>
+	</properties>
+	<modules>
+		<module>agorava-stackoverflow-api</module>
+		<module>agorava-stackoverflow-cdi</module>
+		<module>agorava-stackoverflow-utils</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-parent</artifactId>
+				<version>${agorava-core.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.agorava</groupId>
+				<artifactId>agorava-core-impl-cdi</artifactId>
+				<version>${agorava-core.version}</version>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
 	<scm>
 		<url>https://github.com/Riduidel/agorava-stackoverflow.git</url>
@@ -173,6 +173,21 @@
 			<url>site/${project.version}</url>
 		</site>
 	</distributionManagement>
+	<repositories>
+		<!-- Agorava snapshot repo is used for times where maven central is not enough up-to-date (like for that agorava-stackoverflow-utils thingie -->
+		<repository>
+			<id>agorava-snapshot-repo</id>
+			<name>Agorava Snapshot Repository</name>
+			<url>http://repository-agorava.forge.cloudbees.com/snapshot/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<profiles>
 		<profile>
 			<id>generate-model</id>
