@@ -36,12 +36,12 @@ public interface StackExchangeAnswersService extends StackExchangeURIs {
      * @author Nicolas
      *
      */
-    public static enum Filter {
+    public static enum AnswerFilter implements Filter {
     	FullAnswer("!-u2CTDQ4");
     	
     	private final String text;
 
-		private Filter(String t) {
+		private AnswerFilter(String t) {
     		this.text = t;
     	}
     	
