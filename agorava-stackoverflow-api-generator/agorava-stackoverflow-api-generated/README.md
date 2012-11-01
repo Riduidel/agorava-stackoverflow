@@ -1,13 +1,5 @@
-[![Build Status](https://buildhive.cloudbees.com/job/Riduidel/job/agorava-stackoverflow/badge/icon)](https://buildhive.cloudbees.com/job/Riduidel/job/agorava-stackoverflow/)
+agorava-stackoverflow-api-generated
+===================================
 
-agorava-stackoverflow
-=====================
-
-An attempt at creating an Agorava service hub for StackOverflow
-
-Project documentation is available through [GitHub pages][1]. So, for your informations, here are all versions pages (sorted in reverse numeric order) : 
-
- * [0.0.1-SNAPSHOT][2]
- 
-  [1]: http://pages.github.com/
-  [2]: http://riduidel.github.com/agorava-stackoverflow/site/0.0.1-SNAPSHOT/
+To have all data downloaded, projects need to have a common dependency, that agorava-stackoverflow-api can use as a dependency. 
+This way the whole generation part is run before agorava-stackoverflow-api, which is precisely the goal of all that generation.
