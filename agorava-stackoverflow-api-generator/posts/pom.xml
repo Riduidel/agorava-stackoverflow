@@ -9,7 +9,6 @@
 	<artifactId>posts</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<element.to.generate>${project.artifactId}</element.to.generate>
 		<query.to.use>/2.1/posts?order=desc&amp;amp;sort=activity&amp;site=stackoverflow&amp;filter=!bULULThFhEeZWu</query.to.use>
 	</properties>
 </project>

@@ -10,9 +10,10 @@
 	<packaging>pom</packaging>
 	<description>a generator project abusing some components to produce code</description>
 	<properties>
-		<element.to.generate>${artifactId}</element.to.generate>
+		<element.to.generate>${project.artifactId}</element.to.generate>
 		<!-- path is invalid in this project, but will become valid once in subdirectories 
 			(not very clean, but nevertheless efficient -->
+		<jsonschema2pojo.package>org.agorava.stackexchange.model.${element.to.generate}</jsonschema2pojo.package>
 		<jsonschema2pojo.directory>${project.basedir}/../../agorava-stackoverflow-api/src/generated</jsonschema2pojo.directory>
 		<jsonschema2pojo.source.directory>${jsonschema2pojo.directory}/json</jsonschema2pojo.source.directory>
 		<jsonschema2pojo.output.directory>${jsonschema2pojo.directory}/json-pojos</jsonschema2pojo.output.directory>
@@ -68,7 +69,7 @@
 									<sourcePaths>
 										<sourcePath>${jsonschema2pojo.source.directory}/${element.to.generate}/data.json</sourcePath>
 									</sourcePaths>
-									<targetPackage>org.agorava.stackexchange.model.${element.to.generate}</targetPackage>
+									<targetPackage>${jsonschema2pojo.package}</targetPackage>
 								</configuration>
 							</execution>
 						</executions>

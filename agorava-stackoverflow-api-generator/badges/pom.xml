@@ -9,7 +9,6 @@
 	<artifactId>badges</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<element.to.generate>${project.artifactId}</element.to.generate>
 		<query.to.use>/2.1/badges?order=desc&amp;sort=rank&amp;site=stackoverflow&amp;filter=!9hnGsz_g*</query.to.use>
 	</properties>
 </project>

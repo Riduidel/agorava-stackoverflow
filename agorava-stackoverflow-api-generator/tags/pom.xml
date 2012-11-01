@@ -9,7 +9,6 @@
 	<artifactId>tags</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<element.to.generate>${project.artifactId}</element.to.generate>
 		<query.to.use>/2.1/tags?order=desc&amp;sort=popular&amp;site=stackoverflow&amp;filter=!9hnGsvAqY</query.to.use>
 	</properties>
 
