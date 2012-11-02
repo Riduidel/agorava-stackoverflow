@@ -28,7 +28,7 @@ public class StackExchangeUserServiceImpl extends StackExchangeBaseService imple
 
 	@Override
 	public UsersWrapper getMe(StackExchangeQueryParameters<Date> query) {
-        return get(ME_URI, UsersWrapper.class, query);
+        return get(MY_URI, UsersWrapper.class, query);
 	}
 
 	@Override

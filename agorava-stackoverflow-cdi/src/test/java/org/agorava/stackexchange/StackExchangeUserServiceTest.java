@@ -26,9 +26,7 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class StackExchangeUserServiceTest extends StackExchangeTest {
 
-    private static final int RIDUIDEL_ON_STACKOVERFLOW = 15619;
-	private static final Integer ANTOINE_SD_ON_STACKOVERFLOW = 523758;
-	@Inject
+    @Inject
     StackExchangeUserService userService;
 
     /**

@@ -15,11 +15,23 @@ public class StackExchangeAnswersServiceImpl  extends StackExchangeBaseService i
 
     @Override
     public AnswersWrapper getAnswers(StackExchangeQueryParameters<Date> parameters) {
-        return get(SITE_ANSWERS, AnswersWrapper.class, parameters);
+        return get(ANSWERS_URI, AnswersWrapper.class, parameters);
     }
 
     @Override
     public AnswersWrapper getAnswers(StackExchangeQueryParameters<Date> parameters, Integer... ids) {
-        return get(SITE_ANSWERS_WITH_IDS, AnswersWrapper.class, parameters, asCollection(ids));
+        return get(ANSWERS_WITH_IDS_URI, AnswersWrapper.class, parameters, asCollection(ids));
     }
+
+	@Override
+	public AnswersWrapper getAnswersOf(
+			StackExchangeQueryParameters<Date> parameters, Integer... ids) {
+        return get(ANSWERS_BY_USERS_URI, AnswersWrapper.class, parameters, asCollection(ids));
+	}
+
+	@Override
+	public AnswersWrapper getMyAnswers(
+			StackExchangeQueryParameters<Date> parameters) {
+        return get(ANSWERS_BY_ME_URI, AnswersWrapper.class, parameters);
+	}
 }

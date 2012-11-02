@@ -16,8 +16,18 @@ public interface StackExchangeAnswersService extends StackExchangeURIs {
     /**
      * defined from https://api.stackexchange.com/docs/answers
      */
-    public static final String SITE_ANSWERS = "answers/";
-    public static final String SITE_ANSWERS_WITH_IDS = "answers/%s";
+    public static final String ANSWERS_URI = "answers/";
+    public static final String ANSWERS_WITH_IDS_URI = "answers/%s";
+    
+    /**
+     * Get the answers given by this list of users. Documented in http://api.stackexchange.com/docs/answers-on-users
+     */
+    public static final String ANSWERS_BY_USERS_URI = "users/%s/answers";
+    
+    /**
+     * Documented inhttp://api.stackexchange.com/docs/me-answers
+     */
+    public static final String ANSWERS_BY_ME_URI = "me/answers";
     
     /**
      * Sort orders usable with {@link StackExchangeQueryParameters} for answers queries
@@ -50,4 +60,20 @@ public interface StackExchangeAnswersService extends StackExchangeURIs {
      * @return an answer wrapper containing answers matching the given criterias, and with the given ids
      */
     AnswersWrapper getAnswers(StackExchangeQueryParameters<Date> parameters, Integer...ids);
+    
+    
+    /**
+     * Get answers provided by the given list of users ids.
+     * @param parameters
+     * @param ids a lizt of users id
+     * @return
+     */
+    AnswersWrapper getAnswersOf(StackExchangeQueryParameters<Date> parameters, Integer...ids);
+
+    /**
+     * Get answers the logged in user answered.
+     * @param parameters
+     * @return
+     */
+    AnswersWrapper getMyAnswers(StackExchangeQueryParameters<Date> parameters);
 }

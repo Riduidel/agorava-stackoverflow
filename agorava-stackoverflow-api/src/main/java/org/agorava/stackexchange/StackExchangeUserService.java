@@ -31,7 +31,7 @@ public interface StackExchangeUserService {
 	 * URI allowing access to the "me" user for any site.
 	 * See here (https://api.stackexchange.com/docs/me) for more infos
 	 */
-	public static final String ME_URI = "me";
+	public static final String MY_URI = "me";
 	/**
 	 * URI accessing to the users uri
 	 */

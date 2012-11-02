@@ -213,8 +213,12 @@ public class StackExchangeQueryParameters<RangeType> {
             if(!Modifier.isStatic(f.getModifiers()) && !Modifier.isFinal(f.getModifiers())) {
                 try {
                     Object value = f.get(this);
-                    if(value!=null && !value.equals(0))
-                        returned.put(f.getName(), value);
+                    if(value!=null && !value.equals(0)) {
+                    	if(value instanceof Date) {
+                    		value = ((Date) value).getTime();
+                    	}
+                    	returned.put(f.getName(), value);
+                    }
                 } catch (IllegalArgumentException ex) {
                     Logger.getLogger(StackExchangeQueryParameters.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalAccessException ex) {

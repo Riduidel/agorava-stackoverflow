@@ -34,6 +34,8 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public abstract class StackExchangeTest {
 
+	public static final int RIDUIDEL_ON_STACKOVERFLOW = 15619;
+	public static final Integer ANTOINE_SD_ON_STACKOVERFLOW = 523758;
 	@Inject
     @StackExchange
     SocialMediaApiHub serviceHub;
