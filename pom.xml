@@ -24,6 +24,8 @@
 		<core.version>${agorava-core.version}</core.version>
 		<jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
 		<solder-impl.version>3.1.1.Final</solder-impl.version>
+		<stackexchange.test.token>al1oNiZl2rMwQXXXuMhcFg))</stackexchange.test.token>
+		<stackexchange.test.secret>bnXC(*GDQNKb6Fo9MIv(nw))</stackexchange.test.secret>
 	</properties>
 	<modules>
 		<module>agorava-stackoverflow-api</module>

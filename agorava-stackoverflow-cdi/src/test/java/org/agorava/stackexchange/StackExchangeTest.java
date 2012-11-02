@@ -4,9 +4,20 @@
  */
 package org.agorava.stackexchange;
 
+import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import javax.inject.Inject;
+
 import org.agorava.core.api.SocialMediaApiHub;
 import org.agorava.core.api.oauth.OAuthToken;
 import org.agorava.core.oauth.scribe.OAuthTokenScribe;
+import org.hamcrest.core.IsNull;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -17,22 +28,15 @@ import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import javax.inject.Inject;
-import java.io.File;
-import java.io.FileNotFoundException;
-
 /**
  * @author ndx
  */
 @RunWith(Arquillian.class)
 public abstract class StackExchangeTest {
 
-    private static final String TEST_TOKEN = "al1oNiZl2rMwQXXXuMhcFg))";
 	@Inject
     @StackExchange
     SocialMediaApiHub serviceHub;
-    /* a temporary revokable test secret provided by StackExchange server (thanks to the code in agorava-stackexchange-utils) */
-	private static String TEST_SECRET = "bnXC(*GDQNKb6Fo9MIv(nw))";
 
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
@@ -59,9 +63,15 @@ public abstract class StackExchangeTest {
     }
 
     @Before
-    public void init() {
-        OAuthToken token = new OAuthTokenScribe(TEST_TOKEN, TEST_SECRET );
-        serviceHub.getSession().setAccessToken(token);
+    public void init() throws IOException {
+    	InputStream stream = getClass().getClassLoader().getResourceAsStream("stackexchange-token.properties");
+    	Properties oauth = new Properties();
+    	oauth.load(stream);
+    	String token, secret;
+    	assertThat(token = oauth.getProperty("stackexchange.test.token"), IsNull.notNullValue());
+  	    assertThat(secret = oauth.getProperty("stackexchange.test.secret"), IsNull.notNullValue());
+        OAuthToken stackExchangeAuth = new OAuthTokenScribe(token, secret );
+        serviceHub.getSession().setAccessToken(stackExchangeAuth);
         serviceHub.getService().initAccessToken();
     }
 }
