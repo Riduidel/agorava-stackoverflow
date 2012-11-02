@@ -47,7 +47,7 @@ public class StackExchangeAnswersServiceTest extends StackExchangeTest {
     public void ensureStackoverflowHasAnAnswerWithTheIds2426513And2453337() {
         StackExchangeQueryParameters<Date> stackExchangeQueryParameters = new StackExchangeQueryParameters<Date>();
         // This filter allows me to have all answer fields set
-        stackExchangeQueryParameters.setFilter(StackExchangeAnswersService.AnswerFilter.FullAnswer);
+        stackExchangeQueryParameters.setFilter(StackExchangeAnswersService.FULL_ANSWER);
         stackExchangeQueryParameters.setSort(StackExchangeAnswersService.Sort.creation.name());
 		AnswersWrapper found = answers.getAnswers(stackExchangeQueryParameters, 2426513, 2453337);
         assertThat(found, IsNull.notNullValue());

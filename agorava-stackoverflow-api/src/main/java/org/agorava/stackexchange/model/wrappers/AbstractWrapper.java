@@ -2,7 +2,9 @@
 package org.agorava.stackexchange.model.wrappers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +33,14 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
     "has_more"
 })
 public class AbstractWrapper<WrappedData> {
+	/**
+	 * Filtering interface allowing guava-like processing
+	 *
+	 * @param <WrappedData>
+	 */
+	public static interface ItemFilter<WrappedData> {
+		public boolean matches(WrappedData toMatch);
+	}
 
     @JsonProperty("total")
     private Integer total;
@@ -62,7 +72,7 @@ public class AbstractWrapper<WrappedData> {
         this.total = total;
     }
 
-    public AbstractWrapper withTotal(Integer total) {
+    public AbstractWrapper<WrappedData> withTotal(Integer total) {
         this.total = total;
         return this;
     }
@@ -77,7 +87,7 @@ public class AbstractWrapper<WrappedData> {
         this.pageSize = pageSize;
     }
 
-    public AbstractWrapper withPageSize(Integer pageSize) {
+    public AbstractWrapper<WrappedData> withPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
@@ -92,7 +102,7 @@ public class AbstractWrapper<WrappedData> {
         this.page = page;
     }
 
-    public AbstractWrapper withPage(Integer page) {
+    public AbstractWrapper<WrappedData> withPage(Integer page) {
         this.page = page;
         return this;
     }
@@ -107,7 +117,7 @@ public class AbstractWrapper<WrappedData> {
         this.type = type;
     }
 
-    public AbstractWrapper withType(String type) {
+    public AbstractWrapper<WrappedData> withType(String type) {
         this.type = type;
         return this;
     }
@@ -122,7 +132,7 @@ public class AbstractWrapper<WrappedData> {
         this.items = items;
     }
 
-    public AbstractWrapper withItems(List<WrappedData> items) {
+    public AbstractWrapper<WrappedData> withItems(List<WrappedData> items) {
         this.items = items;
         return this;
     }
@@ -137,7 +147,7 @@ public class AbstractWrapper<WrappedData> {
         this.quotaRemaining = quotaRemaining;
     }
 
-    public AbstractWrapper withQuotaRemaining(Integer quotaRemaining) {
+    public AbstractWrapper<WrappedData> withQuotaRemaining(Integer quotaRemaining) {
         this.quotaRemaining = quotaRemaining;
         return this;
     }
@@ -152,7 +162,7 @@ public class AbstractWrapper<WrappedData> {
         this.quotaMax = quotaMax;
     }
 
-    public AbstractWrapper withQuotaMax(Integer quotaMax) {
+    public AbstractWrapper<WrappedData> withQuotaMax(Integer quotaMax) {
         this.quotaMax = quotaMax;
         return this;
     }
@@ -167,7 +177,7 @@ public class AbstractWrapper<WrappedData> {
         this.backoff = backoff;
     }
 
-    public AbstractWrapper withBackoff(Integer backoff) {
+    public AbstractWrapper<WrappedData> withBackoff(Integer backoff) {
         this.backoff = backoff;
         return this;
     }
@@ -182,7 +192,7 @@ public class AbstractWrapper<WrappedData> {
         this.hasMore = hasMore;
     }
 
-    public AbstractWrapper withHasMore(Boolean hasMore) {
+    public AbstractWrapper<WrappedData> withHasMore(Boolean hasMore) {
         this.hasMore = hasMore;
         return this;
     }
@@ -212,4 +222,13 @@ public class AbstractWrapper<WrappedData> {
         this.additionalProperties.put(name, value);
     }
 
+    public List<WrappedData> filter(ItemFilter<WrappedData> filter) {
+    	List<WrappedData> returned = new LinkedList<WrappedData>();
+    	for(WrappedData item : getItems()) {
+    		if(filter.matches(item)) {
+    			returned.add(item);
+    		}
+    	}
+    	return returned;
+    }
 }

@@ -18,12 +18,14 @@ import static org.agorava.core.api.oauth.OAuthAppSettingsBuilder.API_SECRET;
  * @author ndx
  */
 public class StackExchangeProducer {
+    public static final String STACKOVERFLOW_SECRET = "r5keqeo7rtTq0NXBea9ZqQ((";
+    public static final String STACKOVERFLOW_TOKEN = "X)SStU6ugHkVHwu0zZ3JBg((";
 
     @StackExchange
     @ApplicationScoped
     @OAuthApplication(params = {
-            @Param(name = API_KEY, value = "TODO generate api key"),
-            @Param(name = API_SECRET, value = "TODO generate api secret")})
+            @Param(name = API_KEY, value = STACKOVERFLOW_TOKEN),
+            @Param(name = API_SECRET, value = STACKOVERFLOW_SECRET)})
     @Produces
     public SocialMediaApiHub OAuthSettinsProducer(StackExchangeServiceHub service) {
         return service;

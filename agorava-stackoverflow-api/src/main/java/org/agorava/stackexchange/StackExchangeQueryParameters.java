@@ -179,7 +179,7 @@ public class StackExchangeQueryParameters<RangeType> {
     }
 
     /**
-     * Set filter to be used on that query. We HIGHLY recommend you use one of {@link DefaultFilter} values 
+     * Set filter to be used on that query. We HIGHLY recommend you use one of {@link Filter} values 
      * @param filer
      */
     @Deprecated
@@ -197,7 +197,7 @@ public class StackExchangeQueryParameters<RangeType> {
         return this;
     }
    
-    public StackExchangeQueryParameters<RangeType> withFilter(DefaultFilter filter) {
+    public StackExchangeQueryParameters<RangeType> withFilter(Filter filter) {
         setFilter(filter);
         return this;
     }

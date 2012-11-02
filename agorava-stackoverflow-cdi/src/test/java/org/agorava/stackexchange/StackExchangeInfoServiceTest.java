@@ -39,6 +39,7 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 		// so this collections is expected to contain only one item as of now
 		assertThat(infos.getItems().size(), IsNot.not(0));
 		assertThat(infos.getItems().size(), IsNot.not(1));
+		assertThat(infos.getTotal(), IsNot.not(0));
 	}
 
 	@Test
@@ -67,5 +68,6 @@ public class StackExchangeInfoServiceTest extends StackExchangeTest {
 		assertThat(infos.getItems().size(), IsNot.not(0));
 		Privilege createPosts = infos.findWithShortDescription("create posts");
 		assertThat(createPosts, IsNull.notNullValue());
+		assertThat(createPosts.getDescription(), IsNull.notNullValue());
 	}
 }

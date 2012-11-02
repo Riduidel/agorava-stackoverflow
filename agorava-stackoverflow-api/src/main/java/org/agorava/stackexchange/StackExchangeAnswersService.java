@@ -30,25 +30,11 @@ public interface StackExchangeAnswersService extends StackExchangeURIs {
 		votes;
     	
     }
-    
-    /**
-     * StackExchange fields filters usable with ease on that service
-     * @author Nicolas
-     *
-     */
-    public static enum AnswerFilter implements Filter {
-    	FullAnswer("!-u2CTDQ4");
-    	
-    	private final String text;
 
-		private AnswerFilter(String t) {
-    		this.text = t;
-    	}
-    	
-    	public String getText() {
-			return text;
-		}
-    }
+    /**
+     * Filter displaying full answers
+     */
+    public static final Filter FULL_ANSWER = new Filter("!-u2CTDQ4");
     
     /**
      * Get answers with query parameters.

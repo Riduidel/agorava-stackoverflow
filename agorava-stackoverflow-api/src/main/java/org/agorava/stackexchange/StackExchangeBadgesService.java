@@ -11,11 +11,10 @@ import org.agorava.stackexchange.model.wrappers.BadgesWrapper;
  * @author ndx
  */
 public interface StackExchangeBadgesService extends StackExchangeURIs {
-	/**
-	 * A constant to be used for sorting by rank
-	 */
-	public static final String SORT_BY_RANK = "rank";
-	public static final String SORT_BY_TYPE = "type";
+	public static enum Sort {
+		rank,
+		type;
+	}
    
     /**
      * defined from https://api.stackexchange.com/docs/badges

@@ -26,12 +26,13 @@ import java.io.FileNotFoundException;
  */
 @RunWith(Arquillian.class)
 public abstract class StackExchangeTest {
-    public static final String STACKOVERFLOW_SECRET = "r5keqeo7rtTq0NXBea9ZqQ((";
-    public static final String STACKOVERFLOW_TOKEN = "X)SStU6ugHkVHwu0zZ3JBg((";
 
-    @Inject
+    private static final String TEST_TOKEN = "al1oNiZl2rMwQXXXuMhcFg))";
+	@Inject
     @StackExchange
     SocialMediaApiHub serviceHub;
+    /* a temporary revokable test secret provided by StackExchange server (thanks to the code in agorava-stackexchange-utils) */
+	private static String TEST_SECRET = "bnXC(*GDQNKb6Fo9MIv(nw))";
 
     @Deployment
     public static Archive<?> createTestArchive() throws FileNotFoundException {
@@ -59,7 +60,7 @@ public abstract class StackExchangeTest {
 
     @Before
     public void init() {
-        OAuthToken token = new OAuthTokenScribe(STACKOVERFLOW_TOKEN, STACKOVERFLOW_SECRET);
+        OAuthToken token = new OAuthTokenScribe(TEST_TOKEN, TEST_SECRET );
         serviceHub.getSession().setAccessToken(token);
         serviceHub.getService().initAccessToken();
     }
