@@ -24,6 +24,10 @@
 		<core.version>${agorava-core.version}</core.version>
 		<jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
 		<solder-impl.version>3.1.1.Final</solder-impl.version>
+		<!-- credentials that can be used to log in stackexchange. One day they will be
+		invalidated, and I clearly won't change them then ... When this will happen,
+		you will have to make a first build with tests disabled (and the "-Pauthenticate" 
+		flag set) to get new auth tokens -->
 		<stackexchange.test.token>al1oNiZl2rMwQXXXuMhcFg))</stackexchange.test.token>
 		<stackexchange.test.secret>bnXC(*GDQNKb6Fo9MIv(nw))</stackexchange.test.secret>
 	</properties>

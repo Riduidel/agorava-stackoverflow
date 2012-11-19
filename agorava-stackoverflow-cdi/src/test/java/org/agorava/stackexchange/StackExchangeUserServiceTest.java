@@ -26,7 +26,8 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class StackExchangeUserServiceTest extends StackExchangeTest {
 
-    @Inject
+    private static final String USER_RIDUIDEL = "Riduidel";
+	@Inject
     StackExchangeUserService userService;
 
     /**
@@ -43,16 +44,18 @@ public class StackExchangeUserServiceTest extends StackExchangeTest {
     	User antoine_sd = wrapper.getItems().get(0); 
     	User riduidel = wrapper.getItems().get(1); 
     	assertThat(antoine_sd.getDisplayName(), Is.is("Antoine Sabot-Durand"));
-    	assertThat(riduidel.getDisplayName(), Is.is("Riduidel"));
+    	assertThat(riduidel.getDisplayName(), Is.is(USER_RIDUIDEL));
     }
 
     /**
      * If that test fails, it can only mean user is not logged in.
      */
-    @Test @Ignore
+    @Test
     public void IAmLoggedInByMyCredentials() {
     	StackExchangeQueryParameters<Date> query = new StackExchangeQueryParameters<Date>();
     	UsersWrapper wrapper = userService.getMe(query);
     	assertThat(wrapper.getItems().size(), Is.is(1));
+    	User riduidel = wrapper.getItems().get(0);
+    	assertThat(riduidel.getDisplayName(), Is.is(USER_RIDUIDEL));
     }
 }
