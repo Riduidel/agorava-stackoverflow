@@ -7,6 +7,7 @@ package org.agorava.stackexchange;
 import org.agorava.core.api.SocialMediaApiHub;
 import org.agorava.core.api.oauth.Param;
 import org.agorava.core.cdi.OAuthApplication;
+import org.agorava.core.oauth.SimpleOAuthAppSettingsBuilder;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
@@ -23,7 +24,9 @@ public class StackExchangeProducer {
 
     @StackExchange
     @ApplicationScoped
-    @OAuthApplication(params = {
+    @OAuthApplication(
+            builder = SimpleOAuthAppSettingsBuilder.class,
+            params = {
             @Param(name = API_KEY, value = STACKOVERFLOW_TOKEN),
             @Param(name = API_SECRET, value = STACKOVERFLOW_SECRET)})
     @Produces

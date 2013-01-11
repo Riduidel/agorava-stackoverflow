@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>agorava-parent</artifactId>
 		<groupId>org.agorava</groupId>
-		<version>0.5.1-SNAPSHOT</version>
+		<version>0.5.1</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.agorava</groupId>
@@ -20,7 +20,7 @@
 		</license>
 	</licenses>
 	<properties>
-		<agorava-core.version>0.5.1-SNAPSHOT</agorava-core.version>
+		<agorava-core.version>0.5.1</agorava-core.version>
 		<core.version>${agorava-core.version}</core.version>
 		<jsonschema2pojo.version>0.3.3</jsonschema2pojo.version>
 		<solder-impl.version>3.1.1.Final</solder-impl.version>
