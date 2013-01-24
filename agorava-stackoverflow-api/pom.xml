@@ -24,32 +24,27 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.googlecode.jsonschema2pojo</groupId>
-				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
-				<version>${jsonschema2pojo.version}</version>
-				<configuration>
-					<!-- stackexchange doesn't publish schema, so deal with example files -->
-					<sourceType>json</sourceType>
-					<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
-					<targetPackage>org.agorava.stackexchange.model</targetPackage>
-					<!-- plugin add this directory as source root to maven, but NOT not 
-						m2eclipse (known bug of m2eclipse) -->
-					<outputDirectory>${project.build.directory}/generated/json</outputDirectory>
-					<generateBuilders>true</generateBuilders>
-					<!-- we use jackson 1.9.4 (see jackson.version property for more details) -->
-					<annotationStyle>jackson1</annotationStyle>
-					<propertyWordDelimiters>_</propertyWordDelimiters>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+	<profiles>
+		<profile>
+			<id>generate-model</id>
+			<dependencies>
+				<dependency>
+					<artifactId>agorava-stackoverflow-api-generated</artifactId>
+					<groupId>${project.groupId}</groupId>
+					<version>${project.version}</version>
+					<type>pom</type>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>

@@ -4,12 +4,12 @@
  */
 package org.agorava.stackexchange.model.wrappers;
 
-import org.agorava.stackexchange.model.SiteSpecificStats;
+import org.agorava.stackexchange.model.SiteStats;
 
 /**
  *
  * @author ndx
  */
-public class InfosWrapper extends AbstractWrapper<SiteSpecificStats> {
+public class InfosWrapper extends AbstractWrapper<SiteStats> {
     
 }

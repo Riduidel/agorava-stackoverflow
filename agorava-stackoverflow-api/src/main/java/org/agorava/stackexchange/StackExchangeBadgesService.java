@@ -11,18 +11,22 @@ import org.agorava.stackexchange.model.wrappers.BadgesWrapper;
  * @author ndx
  */
 public interface StackExchangeBadgesService extends StackExchangeURIs {
+	public static enum Sort {
+		rank,
+		type;
+	}
    
     /**
      * defined from https://api.stackexchange.com/docs/badges
      */
     public static final String SITE_BADGES = "badges/";
-    public static final String SITE_BADGES_WITH_IDS = "badges/{0}";
+    public static final String SITE_BADGES_WITH_IDS = "badges/%s";
    
     /**
      * defined from https://api.stackexchange.com/docs/badge-recipients
      */
     public static final String SITE_BADGES_RECIPIENTS = "badges/recipients";
-    public static final String SITE_BADGES_RECIPIENTS_WITH_IDS = "badges/{0}/recipients";
+    public static final String SITE_BADGES_RECIPIENTS_WITH_IDS = "badges/%s/recipients";
    
     /**
      * defined from https://api.stackexchange.com/docs/badges-by-name
@@ -44,8 +48,19 @@ public interface StackExchangeBadgesService extends StackExchangeURIs {
      */
     public BadgesWrapper getBadges(StackExchangeQueryParameters<String> query);
     
+    /**
+     * Get bvadges corresponding to query parameters as expressed by {@link #getBadges(StackExchangeQueryParameters)} with the given ids
+     * @param query query parameters
+     * @param badgeIds badges ids to get
+     * @return a wrapper containing badges corresponding to criterias. Sorting is built server side and is kept by application.
+     */
     public BadgesWrapper getBadges(StackExchangeQueryParameters<String> query, Integer...badgeIds);
     
+    /**
+     * Get only named badge. Global behaviour should be identical to {@link #getBadges(StackExchangeQueryParameters)}
+     * @param query
+     * @return
+     */
     public BadgesWrapper getNamedBadges(StackExchangeQueryParameters<String> query);
 
     public BadgesWrapper getNamedBadges(StackExchangeQueryParameters<String> query, String inname);

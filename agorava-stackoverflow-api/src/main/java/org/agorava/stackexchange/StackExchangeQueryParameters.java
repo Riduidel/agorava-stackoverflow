@@ -61,7 +61,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.fromDate = fromDate;
     }
     
-    public StackExchangeQueryParameters withFromDate(Date fromDate) {
+    public StackExchangeQueryParameters<RangeType> withFromDate(Date fromDate) {
         setFromDate(fromDate);
         return this;
     }
@@ -74,7 +74,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.max = max;
     }
     
-    public StackExchangeQueryParameters withMax(RangeType max) {
+    public StackExchangeQueryParameters<RangeType> withMax(RangeType max) {
         setMax(max);
         return this;
     }
@@ -87,7 +87,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.min = min;
     }
     
-    public StackExchangeQueryParameters withMin(RangeType min) {
+    public StackExchangeQueryParameters<RangeType> withMin(RangeType min) {
         setMin(min);
         return this;
     }
@@ -100,7 +100,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.order = order;
     }
     
-    public StackExchangeQueryParameters withOrder(Order order) {
+    public StackExchangeQueryParameters<RangeType> withOrder(Order order) {
         setOrder(order);
         return this;
     }
@@ -113,7 +113,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.page = page;
     }
     
-    public StackExchangeQueryParameters withPage(int page) {
+    public StackExchangeQueryParameters<RangeType> withPage(int page) {
         setPage(page);
         return this;
     }
@@ -126,7 +126,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.pagesize = pagesize;
     }
     
-    public StackExchangeQueryParameters withPagesize(int page) {
+    public StackExchangeQueryParameters<RangeType> withPagesize(int page) {
         setPagesize(page);
         return this;
     }
@@ -139,7 +139,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.site = site;
     }
     
-    public StackExchangeQueryParameters withSite(String site) {
+    public StackExchangeQueryParameters<RangeType> withSite(String site) {
         setSite(site);
         return this;
     }
@@ -152,7 +152,7 @@ public class StackExchangeQueryParameters<RangeType> {
         this.toDate = toDate;
     }
     
-    public StackExchangeQueryParameters withToDate(Date date) {
+    public StackExchangeQueryParameters<RangeType> withToDate(Date date) {
         setToDate(date);
         return this;
     }
@@ -161,11 +161,15 @@ public class StackExchangeQueryParameters<RangeType> {
         return sort;
     }
 
+    /**
+     * When setting a sort order, service interface usually provides an enum with valid values. You are GREATLY encouraged to use that Sort enum instead of a random string.
+     * @param sort
+     */
     public void setSort(String sort) {
         this.sort = sort;
     }
     
-    public StackExchangeQueryParameters withSort(String sort) {
+    public StackExchangeQueryParameters<RangeType> withSort(String sort) {
         setSort(sort);
         return this;
     }
@@ -174,13 +178,27 @@ public class StackExchangeQueryParameters<RangeType> {
         return filter;
     }
 
-    public void setFiler(String filer) {
+    /**
+     * Set filter to be used on that query. We HIGHLY recommend you use one of {@link Filter} values 
+     * @param filer
+     */
+    @Deprecated
+    public void setFilter(String filer) {
         this.filter = filer;
     }
     
+    public void setFilter(Filter filter) {
+		setFilter(filter.getText());
+	}
+    
+    
+    public StackExchangeQueryParameters<RangeType> withFilter(String filter) {
+        setFilter(filter);
+        return this;
+    }
    
-    public StackExchangeQueryParameters withFilter(String filter) {
-        setFiler(filter);
+    public StackExchangeQueryParameters<RangeType> withFilter(Filter filter) {
+        setFilter(filter);
         return this;
     }
 
@@ -195,8 +213,12 @@ public class StackExchangeQueryParameters<RangeType> {
             if(!Modifier.isStatic(f.getModifiers()) && !Modifier.isFinal(f.getModifiers())) {
                 try {
                     Object value = f.get(this);
-                    if(value!=null && !value.equals(0))
-                        returned.put(f.getName(), value);
+                    if(value!=null && !value.equals(0)) {
+                    	if(value instanceof Date) {
+                    		value = ((Date) value).getTime();
+                    	}
+                    	returned.put(f.getName(), value);
+                    }
                 } catch (IllegalArgumentException ex) {
                     Logger.getLogger(StackExchangeQueryParameters.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalAccessException ex) {

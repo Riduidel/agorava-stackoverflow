@@ -9,5 +9,5 @@ package org.agorava.stackexchange;
  * @author Nicolas
  */
 public interface StackExchangeURIs {
-    public static String API_ROOT = "https://api.stackexchange.com/2.0/";
+    public static String API_ROOT = "https://api.stackexchange.com/2.1/";
 }

@@ -12,6 +12,7 @@
 # IntelliJ files #
 atlassian-ide-plugin.xml
 *.iml
+.idea/
 
 # Eclipse files #
 */.settings/*
