@@ -17,13 +17,10 @@
 package org.agorava.stackoverflow.utils;
 
 import org.agorava.core.api.SocialMediaApiHub;
-import org.agorava.core.api.oauth.OAuthSession;
 import org.agorava.core.api.oauth.Param;
 import org.agorava.core.cdi.OAuthApplication;
-import org.agorava.core.cdi.OAuthSessionImpl;
 import org.agorava.core.oauth.PropertyOAuthAppSettingsBuilder;
 import org.agorava.stackexchange.StackExchange;
-import org.agorava.stackexchange.StackExchangeLiteral;
 import org.agorava.stackexchange.StackExchangeServiceHub;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -43,12 +40,5 @@ public class StackExchangeHubProducer {
     @Produces
     public SocialMediaApiHub OAuthSettinsProducer(StackExchangeServiceHub service) {
         return service;
-    }
-
-    @Produces
-    @StackExchange
-    @SessionLess
-    public OAuthSession produceSession() {
-        return new OAuthSessionImpl(StackExchangeLiteral.INSTANCE);
     }
 }
